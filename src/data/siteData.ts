@@ -39,7 +39,7 @@ export const projects: Project[] = [
       'Advanced authentication and account security system for Minecraft servers.',
     category: 'Minecraft Mod [Fabric]',
     link: 'https://modrinth.com/mod/authcore',
-    github: 'https://github.com/Potato-Modding/AuthCore',
+    github: 'https://github.com/PotenFYR-Studios/AuthCore',
   },
   {
     name: 'Statfyr',
@@ -47,7 +47,7 @@ export const projects: Project[] = [
       'Minecraft statistics API and analytics platform with real-time tracking support.',
     category: 'Minecraft Plugin [Bukkit/Spigot]',
     link: 'https://modrinth.com/plugin/statfyr',
-    github: 'https://github.com/Potato-Modding/statfyr',
+    github: 'https://github.com/PotenFYR-Studios/statfyr',
   },
   {
     name: 'Jericho Discord Bot',
