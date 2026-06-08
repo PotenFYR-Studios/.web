@@ -7,7 +7,7 @@ import { Heart, ArrowRight, X, Gift } from 'lucide-react';
 interface DonateButtonProps {
   className?: string;
 }
-
+// Extend the Window interface to include Razorpay
 declare global {
   interface Window {
     Razorpay: any;
