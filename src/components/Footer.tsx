@@ -1,7 +1,7 @@
 import { GitBranch, MessageCircle, Linkedin } from 'lucide-react';
 
 const footerLinks = [
-  { icon: GitBranch, href: 'https://github.com/Potato-Modding', label: 'GitHub' },
+  { icon: GitBranch, href: 'https://github.com/PotenFYR-Studios', label: 'GitHub' },
   { icon: MessageCircle, href: 'https://discord.gg/zUaN2FPBec', label: 'Discord' },
   { icon: Linkedin, href: 'https://linkedin.com/company/potenfyr', label: 'LinkedIn' },
 ];
