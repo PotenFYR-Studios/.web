@@ -56,6 +56,42 @@ export const projects: Project[] = [
     category: 'Discord Bot',
     link: 'https://top.gg/bot/1470079725106888817',
   },
+  {
+  name: 'EchoingDeaths',
+  description:
+    'Minecraft plugin that broadcasts immersive death messages and death-related events across the server.',
+  category: 'Minecraft Plugin [Bukkit/Spigot]',
+  link: 'https://modrinth.com/plugin/echoingdeaths',
+  github: 'https://github.com/PotenFYR-Studios/EchoingDeaths',
+},
+
+{
+  name: 'AFK Hammer',
+  description:
+    'Minecraft moderation utility that helps manage AFK players automatically with configurable actions and tracking.',
+  category: 'Minecraft Plugin [Bukkit/Spigot]',
+  link: 'https://modrinth.com/plugin/afk-hammer',
+  github: 'https://github.com/PotenFYR-Studios/Afk-Hammer',
+},
+
+{
+  name: 'OneJumpAllJump',
+  description:
+    'A lightweight Minecraft plugin where a single player jump causes every player on the server to jump.',
+  category: 'Minecraft Plugin [Bukkit/Spigot]',
+  link: 'https://modrinth.com/plugin/onejumpalljump',
+  github: 'https://github.com/PotenFYR-Studios/ojaj',
+},
+
+{
+  name: 'LootFYR',
+  description:
+    'Best deals from Amazon, Flipkart & more. Available on Telegram and WhatsApp. Hundreds of verified deals are posted daily from Amazon India, Flipkart, Myntra, Meesho, and other major stores to help shoppers save money.',
+  category: 'Web Application',
+  link: 'https://lootfyr.potenfyr.in/',
+  github: '',
+},
+  
 ];
 
 export const services: Service[] = [
