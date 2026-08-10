@@ -50,7 +50,7 @@ export const TextAnimate: React.FC<TextAnimateProps> = ({
       whileInView="visible"
       viewport={{ once: true }}
       className={cn(
-        'inline-flex flex-wrap gap-x-[0.25em]',
+        'flex flex-wrap justify-center gap-x-[0.25em] w-full',
         className
       )}
     >

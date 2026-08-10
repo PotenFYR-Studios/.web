@@ -49,9 +49,6 @@ export default function Footer() {
           <p className="text-xs text-slate-500">
             &copy; {new Date().getFullYear()} Potenfyr Studios. All rights reserved.
           </p>
-          <p className="text-xs text-slate-500">
-            Engineered with precision for dark minimalist elegance.
-          </p>
         </div>
       </div>
     </footer>

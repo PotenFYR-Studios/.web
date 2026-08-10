@@ -21,7 +21,7 @@ export default function About() {
 
   return (
     <section id="about" className="relative py-28 bg-slate-950 overflow-hidden">
-      
+
       {/* Parallax Background Dots & Glow */}
       <Parallax speed={-5} className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-dots-white opacity-30 mask-radial-gradient" />
@@ -29,7 +29,7 @@ export default function About() {
       </Parallax>
 
       <div ref={ref} className="relative z-10 max-w-6xl mx-auto px-6">
-        
+
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
           <Parallax speed={-2}>
@@ -47,16 +47,18 @@ export default function About() {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, delay: 0.1 }}
-              className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight"
+              className="text-3xl text-center sm:text-5xl font-extrabold text-white tracking-tight leading-tight"
             >
-              <TextAnimate text="Engineering software with precision & scale." />
+              <div className="text-center">
+                <TextAnimate text="Engineering software with precision & scale." />
+              </div>
             </motion.h2>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, delay: 0.2 }}
-              className="mt-4 text-slate-400 text-base font-normal leading-relaxed"
+              className="mt-4 text-center text-slate-400 text-base font-normal leading-relaxed"
             >
               Potenfyr Studios is a modern development studio built by tech enthusiasts. We craft high-performance mods, automation systems, and developer infrastructure.
             </motion.p>
@@ -65,7 +67,7 @@ export default function About() {
 
         {/* Aceternity Style Bento Grid Layout */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          
+
           {/* Main Overview Bento Card (Spans full 3 columns) */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
