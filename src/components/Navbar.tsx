@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ArrowUpRight, Sparkles } from 'lucide-react';
 import { navLinks } from '../data/siteData';
-import { ThemeToggle } from './ui/ThemeToggle';
+
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -65,9 +65,6 @@ export default function Navbar() {
             <span>Join Community</span>
             <ArrowUpRight size={13} className="text-slate-400 group-hover:text-cyan-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
           </a>
-
-          {/* Top Right Theme Toggler */}
-          <ThemeToggle />
 
           {/* Mobile Menu Button */}
           <button
