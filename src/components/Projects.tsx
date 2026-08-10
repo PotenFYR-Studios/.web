@@ -1,84 +1,11 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Parallax } from 'react-scroll-parallax';
-import { ExternalLink, Github } from 'lucide-react';
+import { ExternalLink, Github, Sparkles, FolderGit2, AlertTriangle } from 'lucide-react';
 import { projects } from '../data/siteData';
-
-function ProjectCard({
-  project,
-  index,
-}: {
-  project: (typeof projects)[0];
-  index: number;
-}) {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.15,
-  });
-
-  return (
-    <Parallax speed={2 + index * 1.5}>
-      <motion.div
-        ref={ref}
-        initial={{ opacity: 0, y: 60 }}
-        animate={inView ? { opacity: 1, y: 0 } : {}}
-        transition={{
-          duration: 1,
-          delay: index * 0.15,
-          ease: [0.16, 1, 0.3, 1],
-        }}
-        whileHover={{ y: -12, transition: { duration: 0.4, ease: 'easeOut' } }}
-        className="group relative rounded-2xl border border-white/[0.06] bg-white/[0.02] p-7 sm:p-8 hover:border-white/[0.12] transition-all duration-700 overflow-hidden"
-      >
-        {/* Animated border glow on hover */}
-        <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-          <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-accent-cyan/10 via-transparent to-accent-blue/10" />
-          <div className="absolute -inset-[1px] rounded-2xl bg-gradient-to-br from-accent-cyan/20 via-transparent to-accent-blue/20" style={{ mask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)', maskComposite: 'xor', WebkitMaskComposite: 'xor', padding: '1px' }} />
-        </div>
-
-        {/* Background glow */}
-        <div className="absolute -inset-2 bg-gradient-to-br from-accent-cyan/[0.06] to-accent-blue/[0.04] rounded-3xl opacity-0 group-hover:opacity-100 blur-2xl transition-opacity duration-700 -z-10" />
-
-        <div className="relative">
-          <div className="flex items-start justify-between gap-4">
-            <span className="inline-block px-3 py-1.5 text-[10px] font-semibold tracking-[0.15em] uppercase text-accent-cyan/80 bg-accent-cyan/[0.06] rounded-md border border-accent-cyan/10">
-              {project.category}
-            </span>
-          </div>
-
-          <h3 className="mt-5 text-xl font-semibold text-white tracking-[-0.01em] group-hover:text-white transition-colors">
-            {project.name}
-          </h3>
-
-          <p className="mt-3 text-sm text-brand-silver/60 leading-[1.7] font-light">
-            {project.description}
-          </p>
-
-          <div className="mt-7 flex items-center gap-3">
-            {project.link && (
-              <a
-                href={project.link}
-                className="inline-flex items-center gap-2 px-4 py-2.5 text-xs font-medium text-white/80 bg-white/[0.05] hover:bg-white/[0.1] rounded-lg border border-white/[0.06] hover:border-white/[0.12] transition-all duration-500"
-              >
-                <ExternalLink size={12} />
-                View Project
-              </a>
-            )}
-            {project.github && (
-              <a
-                href={project.github}
-                className="inline-flex items-center gap-2 px-4 py-2.5 text-xs font-medium text-brand-silver/60 hover:text-white/80 bg-white/[0.03] hover:bg-white/[0.07] rounded-lg border border-white/[0.04] hover:border-white/[0.1] transition-all duration-500"
-              >
-                <Github size={12} />
-                Source
-              </a>
-            )}
-          </div>
-        </div>
-      </motion.div>
-    </Parallax>
-  );
-}
+import { CardSpotlight } from './ui/CardSpotlight';
+import { BorderBeam } from './ui/BorderBeam';
+import { TextAnimate } from './ui/TextAnimate';
 
 export default function Projects() {
   const [ref, inView] = useInView({
@@ -87,50 +14,140 @@ export default function Projects() {
   });
 
   return (
-    <section id="projects" className="relative py-40 bg-brand-charcoal overflow-hidden">
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent" />
-        <Parallax speed={-6} className="absolute inset-0">
-          <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-accent-cyan/[0.02] rounded-full blur-[200px]" />
-          <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-accent-blue/[0.02] rounded-full blur-[180px]" />
-        </Parallax>
-      </div>
+    <section id="projects" className="relative py-28 bg-slate-950 overflow-hidden">
+      
+      {/* Parallax Background Glow */}
+      <Parallax speed={-6} className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] bg-cyan-600/10 rounded-full blur-[180px]" />
+        <div className="absolute bottom-10 left-1/4 w-[400px] h-[400px] bg-blue-600/10 rounded-full blur-[160px]" />
+        <div className="absolute inset-0 bg-grid-white opacity-20 mask-radial-gradient" />
+      </Parallax>
 
-      <div className="max-w-7xl mx-auto px-6">
-        <div ref={ref} className="text-center mb-20">
-          <Parallax speed={4}>
-            <motion.span
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
+        
+        {/* Section Header */}
+        <div ref={ref} className="text-center max-w-2xl mx-auto mb-16">
+          <Parallax speed={-2}>
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6 }}
+              className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-semibold uppercase tracking-widest mb-4"
+            >
+              <FolderGit2 size={12} />
+              <span>Featured Software</span>
+            </motion.div>
+
+            <motion.h2
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="inline-block text-xs font-medium tracking-[0.2em] uppercase text-accent-cyan/80"
+              transition={{ duration: 0.7, delay: 0.1 }}
+              className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight"
             >
-              Projects
-            </motion.span>
-            <motion.h2
-              initial={{ opacity: 0, y: 40 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-5 text-4xl sm:text-5xl lg:text-6xl font-bold tracking-[-0.03em] text-white"
-            >
-              What we&apos;re building
+              <TextAnimate text="What we're building & shipping." />
             </motion.h2>
+
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-5 text-brand-silver/60 max-w-lg mx-auto font-light leading-[1.7]"
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="mt-4 text-slate-400 text-base font-normal leading-relaxed"
             >
-              Each project is built with performance, reliability, and developer experience at its core.
+              Explore our ecosystem of open-source Minecraft mods, moderation tools, automation bots, and web platforms.
             </motion.p>
           </Parallax>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project, i) => (
-            <ProjectCard key={project.name} project={project} index={i} />
-          ))}
+        {/* Projects Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {projects.map((project, idx) => {
+            const isFeatured = idx === 0;
+            const isMaintenance = project.isMaintenance ?? false;
+
+            return (
+              <motion.div
+                key={project.name}
+                initial={{ opacity: 0, y: 30 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: idx * 0.08 }}
+                className="h-full"
+              >
+                <CardSpotlight className="h-full p-7 flex flex-col justify-between group hover:border-cyan-500/40 transition-all duration-300">
+                  {/* Magic UI Border Beam on Featured Project */}
+                  {isFeatured && !isMaintenance && (
+                    <BorderBeam size={220} duration={10} colorFrom="#06b6d4" colorTo="#3b82f6" />
+                  )}
+
+                  <div>
+                    {/* Header Pill & Tags */}
+                    <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
+                      <span className="px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider text-cyan-300 bg-cyan-950/80 border border-cyan-800/50 rounded-md">
+                        {project.category}
+                      </span>
+                      
+                      {isMaintenance ? (
+                        <span className="flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-amber-400 bg-amber-950/80 border border-amber-800/50 px-2.5 py-1 rounded-full animate-pulse">
+                          <AlertTriangle size={11} /> Under Maintenance
+                        </span>
+                      ) : isFeatured ? (
+                        <span className="flex items-center gap-1 text-[10px] font-bold uppercase tracking-widest text-emerald-400 bg-emerald-950/60 border border-emerald-800/40 px-2 py-0.5 rounded-full">
+                          <Sparkles size={10} /> Featured
+                        </span>
+                      ) : null}
+                    </div>
+
+                    {/* Project Title */}
+                    <h3 className="text-xl font-extrabold text-white tracking-tight group-hover:text-cyan-300 transition-colors flex items-center justify-between">
+                      <span>{project.name}</span>
+                    </h3>
+
+                    {/* Project Description */}
+                    <p className="mt-3 text-sm text-slate-400 leading-relaxed font-normal">
+                      {project.description}
+                    </p>
+                  </div>
+
+                  {/* Buttons Action Bar */}
+                  <div className="mt-8 pt-5 border-t border-white/10 flex items-center gap-3">
+                    {isMaintenance ? (
+                      <div className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 text-xs font-semibold text-amber-400/80 bg-amber-950/40 border border-amber-800/30 rounded-xl cursor-not-allowed select-none">
+                        <AlertTriangle size={13} />
+                        <span>Under Maintenance</span>
+                      </div>
+                    ) : (
+                      <>
+                        {project.link && (
+                          <a
+                            href={project.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-white bg-slate-900 hover:bg-cyan-500/20 border border-white/10 hover:border-cyan-400/40 rounded-xl transition-all duration-300 hover:shadow-md"
+                          >
+                            <ExternalLink size={13} className="text-cyan-400" />
+                            <span>View Project</span>
+                          </a>
+                        )}
+
+                        {project.github && (
+                          <a
+                            href={project.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-slate-300 hover:text-white bg-slate-900/60 hover:bg-slate-800 border border-white/5 hover:border-white/15 rounded-xl transition-all duration-300"
+                          >
+                            <Github size={13} />
+                            <span>Source Code</span>
+                          </a>
+                        )}
+                      </>
+                    )}
+                  </div>
+                </CardSpotlight>
+              </motion.div>
+            );
+          })}
         </div>
+
       </div>
     </section>
   );

@@ -1,15 +1,16 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Parallax } from 'react-scroll-parallax';
-import { Cpu, Layers, Zap, Shield, Workflow, Code2 } from 'lucide-react';
+import { Cpu, Layers, Workflow, Code2, Sparkles, Server } from 'lucide-react';
+import { BorderBeam } from './ui/BorderBeam';
+import { CardSpotlight } from './ui/CardSpotlight';
+import { TextAnimate } from './ui/TextAnimate';
 
 const capabilities = [
-  { label: 'Discord Ecosystem Tooling', icon: Workflow },
-  { label: 'Minecraft Plugin & Mod Development', icon: Layers },
-  { label: 'Backend Infrastructure', icon: Cpu },
-  { label: 'Automation Systems', icon: Zap },
-  { label: 'Developer-Focused Solutions', icon: Code2 },
-  { label: 'Scalable Architecture', icon: Shield },
+  { label: 'Discord Ecosystem Tooling', icon: Workflow, desc: 'Automated bots & moderation systems' },
+  { label: 'Minecraft Mods & Plugins', icon: Layers, desc: 'Fabric, Spigot, Bukkit optimization' },
+  { label: 'Backend Architecture', icon: Cpu, desc: 'High-concurrency cloud services' },
+  { label: 'Developer Solutions', icon: Code2, desc: 'APIs, SDKs, and custom libraries' },
 ];
 
 export default function About() {
@@ -19,104 +20,114 @@ export default function About() {
   });
 
   return (
-    <section id="about" className="relative py-40 bg-brand-black overflow-hidden">
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent" />
-        <Parallax speed={-4} className="absolute inset-0">
-          <div className="absolute -top-40 -right-40 w-[600px] h-[600px] bg-accent-cyan/[0.03] rounded-full blur-[200px]" />
-          <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] bg-accent-blue/[0.03] rounded-full blur-[180px]" />
-        </Parallax>
-      </div>
+    <section id="about" className="relative py-28 bg-slate-950 overflow-hidden">
+      
+      {/* Parallax Background Dots & Glow */}
+      <Parallax speed={-5} className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 bg-dots-white opacity-30 mask-radial-gradient" />
+        <div className="absolute top-1/2 left-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-[150px]" />
+      </Parallax>
 
-      <div ref={ref} className="max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-20 items-start">
-          <div>
-            <Parallax speed={3}>
-              <motion.span
-                initial={{ opacity: 0, y: 20 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                className="inline-block text-xs font-medium tracking-[0.2em] uppercase text-accent-cyan/80"
-              >
-                About the studio
-              </motion.span>
+      <div ref={ref} className="relative z-10 max-w-6xl mx-auto px-6">
+        
+        {/* Section Header */}
+        <div className="text-center max-w-2xl mx-auto mb-16">
+          <Parallax speed={-2}>
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6 }}
+              className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-semibold uppercase tracking-widest mb-4"
+            >
+              <Sparkles size={12} />
+              <span>About The Studio</span>
+            </motion.div>
 
-              <motion.h2
-                initial={{ opacity: 0, y: 40 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-                className="mt-6 text-4xl sm:text-5xl lg:text-6xl font-bold tracking-[-0.03em] text-white leading-[1.05]"
-              >
-                Technology,{' '}
-                <span className="bg-gradient-to-r from-white/90 to-brand-silver/60 bg-clip-text text-transparent">
-                  engineered
-                </span>
-                <br />
-                <span className="bg-gradient-to-r from-white/70 to-brand-silver/40 bg-clip-text text-transparent">
-                  right.
-                </span>
-              </motion.h2>
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.7, delay: 0.1 }}
+              className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight"
+            >
+              <TextAnimate text="Engineering software with precision & scale." />
+            </motion.h2>
 
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                className="mt-8 text-[15px] text-brand-silver/70 leading-[1.8] max-w-lg font-light"
-              >
-                Potenfyr Studios is a technology-focused development studio built by
-                tech enthusiasts. We design and build modern tools, infrastructure,
-                and scalable systems across the Discord and Minecraft ecosystems -
-                with a focus on performance, reliability, and developer experience.
-              </motion.p>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                className="mt-10 flex items-center gap-6"
-              >
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-white">3+</div>
-                  <div className="text-[11px] text-brand-silver/50 uppercase tracking-wider mt-1">Projects</div>
-                </div>
-                <div className="w-px h-10 bg-white/[0.06]" />
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-white">2</div>
-                  <div className="text-[11px] text-brand-silver/50 uppercase tracking-wider mt-1">Platforms</div>
-                </div>
-               
-              </motion.div>
-            </Parallax>
-          </div>
-
-          <div className="space-y-3">
-            <Parallax speed={5}>
-              {capabilities.map((item, i) => {
-                const Icon = item.icon;
-                return (
-                  <motion.div
-                    key={item.label}
-                    initial={{ opacity: 0, x: 40 }}
-                    animate={inView ? { opacity: 1, x: 0 } : {}}
-                    transition={{
-                      duration: 0.7,
-                      delay: 0.3 + i * 0.08,
-                      ease: [0.16, 1, 0.3, 1],
-                    }}
-                    className="group flex items-center gap-4 p-4 rounded-xl border border-white/[0.04] bg-white/[0.015] hover:bg-white/[0.035] hover:border-white/[0.08] transition-all duration-500"
-                  >
-                    <div className="w-9 h-9 rounded-lg bg-white/[0.03] border border-white/[0.06] flex items-center justify-center group-hover:border-accent-cyan/20 group-hover:bg-accent-cyan/[0.06] transition-all duration-500">
-                      <Icon size={16} className="text-brand-silver/50 group-hover:text-accent-cyan/80 transition-colors duration-500" />
-                    </div>
-                    <span className="text-sm text-brand-silver/70 group-hover:text-white/90 transition-colors duration-500 font-light">
-                      {item.label}
-                    </span>
-                  </motion.div>
-                );
-              })}
-            </Parallax>
-          </div>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="mt-4 text-slate-400 text-base font-normal leading-relaxed"
+            >
+              Potenfyr Studios is a modern development studio built by tech enthusiasts. We craft high-performance mods, automation systems, and developer infrastructure.
+            </motion.p>
+          </Parallax>
         </div>
+
+        {/* Aceternity Style Bento Grid Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          
+          {/* Main Overview Bento Card (Spans full 3 columns) */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="md:col-span-3"
+          >
+            <CardSpotlight className="h-full p-8 md:p-10 flex flex-col md:flex-row items-center justify-between group gap-8">
+              <BorderBeam size={300} duration={15} colorFrom="#06b6d4" colorTo="#3b82f6" />
+              <div className="flex-1">
+                <div className="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 mb-6 group-hover:scale-110 transition-transform">
+                  <Server size={24} />
+                </div>
+                <h3 className="text-2xl font-bold text-white tracking-tight mb-3">
+                  Infrastructure Built for Scale & Reliability
+                </h3>
+                <p className="text-slate-300 text-sm leading-relaxed font-normal max-w-2xl">
+                  Our core mission is delivering developer-first utilities and infrastructure. Whether it’s high-frequency Minecraft authentication mods, automated Discord moderation bots, or real-time analytics platforms, we engineer for maximum throughput and seamless developer UX.
+                </p>
+              </div>
+
+              <div className="flex flex-col sm:flex-row md:flex-col gap-3 shrink-0">
+                <span className="px-4 py-2 text-xs font-semibold text-cyan-300 bg-cyan-950/80 border border-cyan-800/40 rounded-xl text-center">
+                  Minecraft Ecosystem
+                </span>
+                <span className="px-4 py-2 text-xs font-semibold text-blue-300 bg-blue-950/80 border border-blue-800/40 rounded-xl text-center">
+                  Discord Automation
+                </span>
+                <span className="px-4 py-2 text-xs font-semibold text-indigo-300 bg-indigo-950/80 border border-indigo-800/40 rounded-xl text-center">
+                  REST & WebSockets
+                </span>
+              </div>
+            </CardSpotlight>
+          </motion.div>
+
+          {/* Capabilities Cards Grid */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="md:col-span-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-2"
+          >
+            {capabilities.map((item) => {
+              const Icon = item.icon;
+              return (
+                <CardSpotlight key={item.label} className="p-6 group hover:border-cyan-500/40 transition-all duration-300">
+                  <div className="w-10 h-10 rounded-xl bg-slate-900 border border-white/10 flex items-center justify-center text-slate-400 group-hover:text-cyan-400 group-hover:border-cyan-500/30 group-hover:bg-cyan-500/10 transition-all duration-300 mb-4">
+                    <Icon size={20} />
+                  </div>
+                  <h4 className="text-base font-bold text-white tracking-tight mb-1">
+                    {item.label}
+                  </h4>
+                  <p className="text-xs text-slate-400 leading-relaxed font-normal">
+                    {item.desc}
+                  </p>
+                </CardSpotlight>
+              );
+            })}
+          </motion.div>
+
+        </div>
+
       </div>
     </section>
   );

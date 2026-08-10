@@ -1,29 +1,31 @@
-import { GitBranch, MessageCircle, Linkedin } from 'lucide-react';
+import { GitBranch, MessageCircle} from 'lucide-react';
 
 const footerLinks = [
   { icon: GitBranch, href: 'https://github.com/PotenFYR-Studios', label: 'GitHub' },
   { icon: MessageCircle, href: 'https://discord.gg/zUaN2FPBec', label: 'Discord' },
-  { icon: Linkedin, href: 'https://linkedin.com/company/potenfyr', label: 'LinkedIn' },
 ];
 
 export default function Footer() {
   return (
-    <footer className="relative py-16 bg-brand-black border-t border-white/[0.04]">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-8">
-          <div className="flex flex-col items-center sm:items-start gap-2">
-            <a href="#" className="flex items-center gap-2 text-white font-semibold tracking-tight">
-              <div className="w-6 h-6 rounded-md bg-white/[0.06] border border-white/[0.1] flex items-center justify-center">
-                <span className="text-accent-cyan text-[10px] font-bold">P</span>
+    <footer className="relative py-14 bg-slate-950 border-t border-white/10">
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
+          
+          {/* Brand & Tagline */}
+          <div className="flex flex-col items-center sm:items-start gap-1.5">
+            <a href="#" className="flex items-center gap-2 text-white font-bold tracking-tight text-base">
+              <div className="w-7 h-7 rounded-full bg-gradient-to-tr from-cyan-500/20 to-blue-500/20 border border-cyan-500/30 flex items-center justify-center">
+                <span className="text-cyan-400 text-xs font-black">P</span>
               </div>
-              Potenfyr Studios
+              <span>Potenfyr Studios</span>
             </a>
-            <span className="text-[12px] text-brand-silver/40 font-light">
-              Building powerful digital systems.
+            <span className="text-xs text-slate-400 font-normal">
+              High-performance tools, mods, and developer infrastructure.
             </span>
           </div>
 
-          <div className="flex items-center gap-3">
+          {/* Social Icons */}
+          <div className="flex items-center gap-2.5">
             {footerLinks.map((link) => {
               const Icon = link.icon;
               return (
@@ -33,21 +35,22 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={link.label}
-                  className="w-9 h-9 rounded-lg bg-white/[0.03] border border-white/[0.05] flex items-center justify-center text-brand-silver/40 hover:text-white hover:border-white/[0.12] hover:bg-white/[0.06] transition-all duration-300"
+                  className="w-9 h-9 rounded-xl bg-slate-900 border border-white/10 flex items-center justify-center text-slate-400 hover:text-cyan-400 hover:border-cyan-500/30 hover:bg-cyan-500/10 transition-all duration-300"
                 >
-                  <Icon size={14} />
+                  <Icon size={16} />
                 </a>
               );
             })}
           </div>
+
         </div>
 
-        <div className="mt-10 pt-6 border-t border-white/[0.04] flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-[11px] text-brand-silver/30 font-light">
+        <div className="mt-8 pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-xs text-slate-500">
             &copy; {new Date().getFullYear()} Potenfyr Studios. All rights reserved.
           </p>
-          <p className="text-[11px] text-brand-silver/20 font-light">
-            Designed & engineered with precision.
+          <p className="text-xs text-slate-500">
+            Engineered with precision for dark minimalist elegance.
           </p>
         </div>
       </div>
