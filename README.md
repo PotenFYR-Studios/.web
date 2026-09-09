@@ -127,21 +127,22 @@ bun run build
 
 ---
 
-## 🌐 Deployment & Custom Domain Configuration
+## 🌐 Deployment & Hosting Configuration
 
-This site is deployed to **GitHub Pages** with custom domain routing for `potenfyr.in` and `www.potenfyr.in`.
+This site is deployed to **GitHub Pages** at:
+👉 **[https://potenfyr-studios.github.io/potenfyr-web/](https://potenfyr-studios.github.io/potenfyr-web/)**
 
 ### GitHub Actions Workflow
 
 The automated deployment pipeline ([`.github/workflows/deploy.yml`](.github/workflows/deploy.yml)) handles:
-1. **Push to main**: Builds and deploys the latest version automatically.
-2. **Scheduled 6-Hour Cron (`0 */6 * * *`)**: Rebuilds the site periodically to fetch new repositories and download counts without requiring manual commits.
+1. **Push to main**: Automatically builds and deploys the production bundle to the `gh-pages` branch.
+2. **Scheduled 6-Hour Cron (`0 */6 * * *`)**: Rebuilds the site periodically to auto-sync new repositories, stars, and Modrinth download statistics without requiring manual commits.
 
-### Custom Domain Setup
+### Custom Domain Setup (Optional)
 
-- Apex domain: `potenfyr.in`
-- Subdomain: `www.potenfyr.in`
-- Configured via [`public/CNAME`](public/CNAME) (automatically emitted to `dist/CNAME` during build).
+When ready to link a custom domain (e.g., `potenfyr.in`):
+1. Point your DNS records (A/CNAME) to GitHub Pages IPs (`185.199.108.153`, etc.).
+2. In GitHub repository settings, go to **Settings > Pages > Custom domain** and enter your domain name.
 
 ---
 

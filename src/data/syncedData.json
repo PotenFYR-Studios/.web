@@ -1,5 +1,5 @@
 {
-  "lastSyncedAt": "2026-09-09T10:17:48.643Z",
+  "lastSyncedAt": "2026-09-09T10:39:37.650Z",
   "org": {
     "name": "PotenFYR Studios",
     "login": "PotenFYR-Studios",
@@ -10,6 +10,26 @@
     "url": "https://github.com/PotenFYR-Studios"
   },
   "repos": [
+    {
+      "name": "potenfyr-web",
+      "fullName": "PotenFYR-Studios/potenfyr-web",
+      "description": "Official Website for PotenFYR Studios",
+      "url": "https://github.com/PotenFYR-Studios/potenfyr-web",
+      "homepage": "https://potenfyr-studios.github.io/potenfyr-web/",
+      "stars": 0,
+      "forks": 0,
+      "language": "TypeScript",
+      "topics": [
+        "donations",
+        "donations-website",
+        "potenfyr",
+        "website"
+      ],
+      "updatedAt": "2026-09-09T10:35:55Z",
+      "pushedAt": "2026-09-09T10:36:31Z",
+      "license": "MIT",
+      "isArchived": false
+    },
     {
       "name": "Prog-Language-Eggs",
       "fullName": "PotenFYR-Studios/Prog-Language-Eggs",
@@ -141,26 +161,6 @@
       "updatedAt": "2026-09-06T21:59:25Z",
       "pushedAt": "2026-09-06T21:52:45Z",
       "license": "Apache-2.0",
-      "isArchived": false
-    },
-    {
-      "name": "potenfyr-web",
-      "fullName": "PotenFYR-Studios/potenfyr-web",
-      "description": "Official Website for PotenFYR Studios",
-      "url": "https://github.com/PotenFYR-Studios/potenfyr-web",
-      "homepage": "https://potenfyr.in",
-      "stars": 0,
-      "forks": 0,
-      "language": "TypeScript",
-      "topics": [
-        "donations",
-        "donations-website",
-        "potenfyr",
-        "website"
-      ],
-      "updatedAt": "2026-08-10T14:45:25Z",
-      "pushedAt": "2026-08-10T14:43:58Z",
-      "license": "MIT",
       "isArchived": false
     },
     {
