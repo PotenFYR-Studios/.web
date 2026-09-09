@@ -47,12 +47,13 @@ export interface Contributor {
   role: string;
   imageUrl: string;
   profileUrl: string;
+  hoverText?: string;
 }
 
 export const studioMetadata = {
   name: 'PotenFYR Studios',
   tagline: 'High-Performance Software, Infrastructure & Ecosystem Tooling',
-  hqStatus: 'OPERATIONAL // ALL SYSTEMS ONLINE',
+  hqStatus: 'OPERATIONAL | ALL SYSTEMS ONLINE',
   githubOrg: 'https://github.com/PotenFYR-Studios',
   modrinthOrg: 'https://modrinth.com/organization/potenfyr',
   email: 'support@potenfyr.in',
@@ -71,6 +72,7 @@ export const contributors: Contributor[] = [
     role: 'Core Systems Developer',
     imageUrl: 'https://avatars.githubusercontent.com/u/68150772?v=4',
     profileUrl: 'https://github.com/dashutosh04',
+    hoverText: 'Just a guy',
   },
   {
     name: 'opsiialpha',

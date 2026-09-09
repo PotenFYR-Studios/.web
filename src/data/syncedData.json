@@ -1,5 +1,5 @@
 {
-  "lastSyncedAt": "2026-09-09T11:06:14.015Z",
+  "lastSyncedAt": "2026-09-09T16:36:27.253Z",
   "org": {
     "name": "PotenFYR Studios",
     "login": "PotenFYR-Studios",
@@ -11,11 +11,11 @@
   },
   "repos": [
     {
-      "name": "potenfyr-web",
-      "fullName": "PotenFYR-Studios/potenfyr-web",
+      "name": ".web",
+      "fullName": "PotenFYR-Studios/.web",
       "description": "Official Website for PotenFYR Studios",
-      "url": "https://github.com/PotenFYR-Studios/potenfyr-web",
-      "homepage": "https://potenfyr-studios.github.io/potenfyr-web/",
+      "url": "https://github.com/PotenFYR-Studios/.web",
+      "homepage": "https://potenfyr-studios.github.io/.web/",
       "stars": 0,
       "forks": 0,
       "language": "TypeScript",
@@ -25,8 +25,8 @@
         "potenfyr",
         "website"
       ],
-      "updatedAt": "2026-09-09T11:05:44Z",
-      "pushedAt": "2026-09-09T11:04:56Z",
+      "updatedAt": "2026-09-09T11:11:19Z",
+      "pushedAt": "2026-09-09T16:33:46Z",
       "license": "MIT",
       "isArchived": false
     },
@@ -214,7 +214,7 @@
     {
       "name": "EchoingDeaths",
       "fullName": "PotenFYR-Studios/EchoingDeaths",
-      "description": "EchoingDeaths adds immersive death-based curses to nearby players.  Whenever a player dies, nearby players receive temporary debuffs themed around the cause of death.",
+      "description": "EchoingDeaths adds immersive death-based curses to nearby players. Whenever a player dies, nearby players receive temporary debuffs themed around the cause of death.",
       "url": "https://github.com/PotenFYR-Studios/EchoingDeaths",
       "homepage": "https://modrinth.com/plugin/echoing-deaths",
       "stars": 0,
@@ -236,7 +236,7 @@
   "modrinth": {
     "authcore": {
       "slug": "authcore",
-      "downloads": 1994,
+      "downloads": 2004,
       "followers": 6,
       "icon": "https://cdn.modrinth.com/data/qs5rvacf/93619076634e72af9156f36a0f8984590ac50582_96.webp"
     },
@@ -265,5 +265,5 @@
   },
   "totalStars": 9,
   "totalForks": 1,
-  "totalDownloads": 2058
+  "totalDownloads": 2068
 }

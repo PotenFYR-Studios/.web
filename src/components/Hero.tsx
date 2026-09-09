@@ -11,7 +11,7 @@ import { contributors } from '../data/siteData';
 const teamAvatars = contributors.map((c) => ({
   imageUrl: c.imageUrl,
   profileUrl: c.profileUrl,
-  name: `${c.name} (${c.role})`,
+  name: c.hoverText || (c.name === 'dashutosh04' ? 'Just a guy' : `${c.name} (${c.role})`),
 }));
 
 export default function Hero() {
@@ -47,7 +47,7 @@ export default function Hero() {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
             <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500" />
           </span>
-          <span className="font-medium tracking-wide">PotenFYR Studios // Next-Gen Software & Infrastructure</span>
+          <span className="font-medium tracking-wide">PotenFYR Studios · Next-Gen Software & Infrastructure</span>
           <Sparkles size={13} className="text-cyan-400" />
         </motion.div>
 
@@ -72,7 +72,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
           className="mt-6 text-base sm:text-xl text-slate-400 font-normal leading-relaxed max-w-2xl text-balance"
         >
-          We architect universal hosting containers, high-frequency Minecraft authentication mods, PR-native API security tooling, and developer infrastructure built for extreme scale.
+          We engineer high-performance hosting containers, secure Minecraft authentication frameworks, automated API defense tooling, and scalable developer infrastructure.
         </motion.p>
 
         {/* Action Buttons */}

@@ -103,7 +103,7 @@ export const BugBounty: React.FC = () => {
                 <span className="text-xs font-mono text-slate-400 hidden sm:inline">• Read Before Submitting</span>
               </div>
               <h3 className="text-base sm:text-lg font-extrabold text-white tracking-tight">
-                No Monetary Rewards &mdash; Recognition Only
+                No Monetary Rewards: Recognition Only
               </h3>
               <p className="text-slate-300 text-xs sm:text-sm leading-relaxed font-normal">
                 PotenFYR Studios does <strong className="text-amber-300 font-semibold">NOT</strong> and will <strong className="text-amber-300 font-semibold">NEVER</strong> provide monetary rewards, bounties, cash payouts, or financial compensation of any kind. We provide <span className="text-white font-semibold underline decoration-cyan-400 underline-offset-4">public Hall of Fame recognition and attribution ONLY</span>, granted strictly when a finding is independently verified and deemed worthy by our engineering and security team.

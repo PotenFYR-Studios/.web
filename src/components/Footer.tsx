@@ -26,7 +26,7 @@ export default function Footer() {
               <span>PotenFYR Studios</span>
             </a>
             <p className="text-xs text-slate-400 leading-relaxed max-w-sm">
-              Universal container eggs, Fabric and Spigot Minecraft mods, automated PR-native API security, and developer infrastructure built for extreme concurrency.
+              High-performance container eggs, robust Minecraft authentication frameworks, automated API defense tooling, and scalable cloud infrastructure.
             </p>
             <div className="flex items-center gap-2 text-xs text-slate-500 pt-1">
               <Mail size={13} className="text-cyan-400" />
@@ -73,7 +73,7 @@ export default function Footer() {
             </div>
             <div className="text-[11px] font-mono text-emerald-400 flex items-center gap-1.5 pt-1">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span>DEFCON 1 // ONLINE</span>
+              <span>DEFCON 1 | ALL SYSTEMS ONLINE</span>
             </div>
           </div>
 

@@ -1,11 +1,29 @@
 # PotenFYR Studios Global Robots Configuration
+# https://potenfyr.in / https://potenfyr-studios.github.io/potenfyr-web/
+
 User-agent: *
 Allow: /
-Disallow: /api/
 
-# Crawl-delay for polite crawling
-Crawl-delay: 1
+# Dedicated crawler entries for search engine indexers
+User-agent: Googlebot
+Allow: /
 
-# Host & Sitemap specifications
-Host: https://potenfyr.in
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Yandex
+Allow: /
+
+# Sitemaps
 Sitemap: https://potenfyr.in/sitemap.xml
+Sitemap: https://potenfyr-studios.github.io/potenfyr-web/sitemap.xml
+Host: https://potenfyr.in

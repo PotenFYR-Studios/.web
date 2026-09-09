@@ -13,7 +13,7 @@ export const HQTelemetry: React.FC = () => {
     const diffMin = Math.floor(diffSec / 60);
     if (diffMin < 60) return `${diffMin}m ago`;
     return `${Math.floor(diffMin / 60)}h ago`;
-  }, [snapshot.lastSyncedAt, isSyncing]);
+  }, [snapshot.lastSyncedAt]);
 
   return (
     <div className="w-full bg-slate-950/80 border-y border-white/[0.08] backdrop-blur-xl relative z-20">

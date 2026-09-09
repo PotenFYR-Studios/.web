@@ -33,12 +33,8 @@ export default function Navbar() {
             <span className="text-cyan-400 text-xs font-black tracking-widest">P</span>
             <div className="absolute inset-0 bg-cyan-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm" />
           </div>
-          <span className="flex items-center gap-1.5 font-semibold text-sm sm:text-base text-slate-100 group-hover:text-white transition-colors">
+          <span className="font-semibold text-sm sm:text-base text-slate-100 group-hover:text-white transition-colors">
             PotenFYR Studios
-            <span className="hidden sm:inline-flex items-center gap-1 px-2 py-0.5 text-[9px] font-mono font-semibold text-cyan-300 bg-cyan-950/80 border border-cyan-800/50 rounded-full">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              ONLINE
-            </span>
           </span>
         </a>
 

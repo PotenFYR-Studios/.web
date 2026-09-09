@@ -23,6 +23,23 @@ export interface SyncedRepo {
   isMaintenance?: boolean;
 }
 
+interface RawGitHubRepo {
+  name: string;
+  full_name: string;
+  description?: string | null;
+  html_url: string;
+  homepage?: string | null;
+  stargazers_count?: number;
+  forks_count?: number;
+  language?: string | null;
+  topics?: string[];
+  updated_at: string;
+  pushed_at: string;
+  license?: { spdx_id?: string; name?: string } | null;
+  archived?: boolean;
+  private?: boolean;
+}
+
 export interface SyncedSnapshot {
   lastSyncedAt: string;
   org: {
@@ -43,7 +60,9 @@ export interface SyncedSnapshot {
 }
 
 const STORAGE_KEY = 'potenfyr_hq_sync_v2';
-const AUTO_REFRESH_INTERVAL_MS = 45 * 1000; // 45 seconds live poll
+const RATE_LIMIT_STORAGE_KEY = 'potenfyr_gh_rate_limit_until';
+const AUTO_REFRESH_INTERVAL_MS = 15 * 60 * 1000; // 15 minutes polling to respect rate limits
+const MIN_FETCH_THROTTLE_MS = 5 * 60 * 1000; // 5 minutes minimum between automatic focus/visibility syncs
 
 function loadInitialSnapshot(): SyncedSnapshot {
   const fallback = fallbackData as unknown as SyncedSnapshot;
@@ -105,6 +124,9 @@ export function useGitHubSync() {
   const [lastSyncStatus, setLastSyncStatus] = useState<'cached' | 'live' | 'fallback'>('cached');
   const [notifications, setNotifications] = useState<RepoNotification[]>([]);
 
+  // Track timestamps to throttle live fetches and respect GitHub limits
+  const lastFetchAttemptRef = useRef<number>(0);
+
   // Ref to track known repo names so we only notify on actual subsequent changes
   const knownRepoNamesRef = useRef<Set<string>>(
     new Set(loadInitialSnapshot().repos.map((r) => r.name.toLowerCase()))
@@ -132,32 +154,74 @@ export function useGitHubSync() {
     }, 8000);
   }, [dismissNotification]);
 
-  const fetchLive = useCallback(async () => {
+  const fetchLive = useCallback(async (isManual = false) => {
+    const now = Date.now();
+
+    // Check if we are in active cooldown from a previous GitHub rate-limit
+    const rateLimitUntil = parseInt(localStorage.getItem(RATE_LIMIT_STORAGE_KEY) || '0', 10);
+    if (now < rateLimitUntil && !isManual) {
+      setLastSyncStatus('cached');
+      return;
+    }
+
+    // Throttle automated fetches to avoid burning through the unauthenticated rate limit
+    if (!isManual && now - lastFetchAttemptRef.current < MIN_FETCH_THROTTLE_MS) {
+      return;
+    }
+
+    lastFetchAttemptRef.current = now;
     setIsSyncing(true);
+
     try {
       const headers: Record<string, string> = {
         Accept: 'application/vnd.github.v3+json',
       };
 
+      const customToken = import.meta.env.VITE_GITHUB_TOKEN;
+      if (customToken) {
+        headers['Authorization'] = `Bearer ${customToken}`;
+      }
+
       const reposRes = await fetch('https://api.github.com/orgs/PotenFYR-Studios/repos?per_page=100&sort=pushed', {
         headers,
       });
 
-      if (!reposRes.ok) {
-        throw new Error(`GitHub API HTTP ${reposRes.status}`);
+      // Gracefully handle GitHub rate limit (HTTP 403 / 429) without console errors
+      if (reposRes.status === 403 || reposRes.status === 429) {
+        const resetHeader = reposRes.headers.get('x-ratelimit-reset');
+        const resetMs = resetHeader ? parseInt(resetHeader, 10) * 1000 : now + 60 * 60 * 1000;
+        localStorage.setItem(RATE_LIMIT_STORAGE_KEY, resetMs.toString());
+        setLastSyncStatus('cached');
+        setIsSyncing(false);
+        return;
       }
 
-      const rawRepos = await reposRes.json();
+      if (!reposRes.ok) {
+        setLastSyncStatus('cached');
+        setIsSyncing(false);
+        return;
+      }
+
+      // Clear any prior rate-limit record on successful response
+      localStorage.removeItem(RATE_LIMIT_STORAGE_KEY);
+
+      const rawRepos: RawGitHubRepo[] = await reposRes.json();
       if (!Array.isArray(rawRepos)) {
-        throw new Error('Invalid repos response format');
+        setLastSyncStatus('cached');
+        setIsSyncing(false);
+        return;
       }
 
       const repos: SyncedRepo[] = rawRepos
-        .filter((r: any) => r.name !== '.github')
-        .map((r: any) => ({
+        .filter((r) => r.name !== '.github')
+        .map((r) => ({
           name: r.name,
           fullName: r.full_name,
-          description: (r.description || '').replace(/[—–]/g, '-').replace(/\s+-\s+/g, ', '),
+          description: (r.description || '')
+            .replace(/[—–]/g, ', ')
+            .replace(/\s+-\s+/g, ', ')
+            .replace(/\s+/g, ' ')
+            .trim(),
           url: r.html_url,
           homepage: r.homepage || null,
           stars: r.stargazers_count ?? 0,
@@ -186,7 +250,6 @@ export function useGitHubSync() {
         // Detect deletions
         for (const prevName of knownRepoNamesRef.current) {
           if (!currentNames.has(prevName)) {
-            // Find what the display name was
             const prevRepo = snapshot.repos.find((r) => r.name.toLowerCase() === prevName);
             triggerNotification('removed', prevRepo ? prevRepo.name : prevName);
           }
@@ -242,33 +305,37 @@ export function useGitHubSync() {
       saveToStorage(updatedSnapshot);
       setSnapshot(updatedSnapshot);
       setLastSyncStatus('live');
-    } catch (err) {
-      console.warn('[PotenFYR Studios] Live sync notice (using cached/fallback):', err);
-      setLastSyncStatus((prev) => (prev === 'live' ? 'live' : 'cached'));
+    } catch {
+      // Keep existing snapshot seamlessly without noisy errors
+      setLastSyncStatus('cached');
     } finally {
       setIsSyncing(false);
     }
   }, [snapshot.repos, triggerNotification]);
 
   useEffect(() => {
-    fetchLive();
+    fetchLive(false);
 
     const intervalId = setInterval(() => {
-      fetchLive();
+      fetchLive(false);
     }, AUTO_REFRESH_INTERVAL_MS);
 
     const handleVisibilityChange = () => {
       if (document.visibilityState === 'visible') {
-        fetchLive();
+        fetchLive(false);
       }
     };
 
-    window.addEventListener('focus', fetchLive);
+    const handleFocus = () => {
+      fetchLive(false);
+    };
+
+    window.addEventListener('focus', handleFocus);
     document.addEventListener('visibilitychange', handleVisibilityChange);
 
     return () => {
       clearInterval(intervalId);
-      window.removeEventListener('focus', fetchLive);
+      window.removeEventListener('focus', handleFocus);
       document.removeEventListener('visibilitychange', handleVisibilityChange);
     };
   }, [fetchLive]);

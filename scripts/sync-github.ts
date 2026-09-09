@@ -22,6 +22,22 @@ interface SyncedRepo {
   isArchived: boolean;
 }
 
+interface RawGitHubRepo {
+  name: string;
+  full_name: string;
+  description?: string | null;
+  html_url: string;
+  homepage?: string | null;
+  stargazers_count?: number;
+  forks_count?: number;
+  language?: string | null;
+  topics?: string[];
+  updated_at: string;
+  pushed_at: string;
+  license?: { spdx_id?: string; name?: string } | null;
+  archived?: boolean;
+}
+
 interface ModrinthData {
   slug: string;
   downloads: number;
@@ -107,14 +123,18 @@ async function runSync() {
     let repos: SyncedRepo[] = currentSnapshot?.repos || [];
 
     if (reposRes.ok) {
-      const rawRepos = await reposRes.json();
+      const rawRepos: RawGitHubRepo[] = await reposRes.json();
       if (Array.isArray(rawRepos)) {
         repos = rawRepos
-          .filter((r: any) => r.name !== '.github')
-          .map((r: any) => ({
+          .filter((r) => r.name !== '.github')
+          .map((r) => ({
             name: r.name,
             fullName: r.full_name,
-            description: (r.description || '').replace(/[—–]/g, '-').replace(/\s+-\s+/g, ', '),
+            description: (r.description || '')
+              .replace(/[—–]/g, ', ')
+              .replace(/\s+-\s+/g, ', ')
+              .replace(/\s+/g, ' ')
+              .trim(),
             url: r.html_url,
             homepage: r.homepage || null,
             stars: r.stargazers_count ?? 0,

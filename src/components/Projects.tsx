@@ -234,9 +234,9 @@ export default function Projects() {
         </div>
 
         {/* Projects Grid */}
-        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <AnimatePresence>
-            {filteredProjects.map((project, idx) => {
+        <motion.div layout="position" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <AnimatePresence mode="popLayout">
+            {filteredProjects.map((project) => {
               const isFeatured = project.isFlagship ?? false;
               const isMaintenance = project.isMaintenance ?? false;
               const isPrivate = project.isPrivate ?? false;
@@ -246,11 +246,15 @@ export default function Projects() {
               return (
                 <motion.div
                   key={project.name}
-                  layout
+                  layout="position"
                   initial={{ opacity: 0, scale: 0.96 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.96 }}
-                  transition={{ duration: 0.3, delay: idx * 0.04 }}
+                  transition={{
+                    opacity: { duration: 0.15 },
+                    scale: { duration: 0.15 },
+                    layout: { type: 'spring', stiffness: 450, damping: 32 },
+                  }}
                   className="h-full"
                 >
                   <CardSpotlight className="h-full p-7 flex flex-col justify-between group hover:border-cyan-500/40 transition-all duration-300">
