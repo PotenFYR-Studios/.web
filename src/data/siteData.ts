@@ -168,16 +168,7 @@ export const projects: Project[] = [
     tags: ['Paper', 'Spigot', 'Immersion'],
   },
   {
-    name: 'AFK Hammer',
-    description:
-      'Automated moderation utility that tracks player inactivity and applies custom, configurable actions to keep server performance optimal.',
-    category: 'Minecraft Tooling',
-    link: 'https://modrinth.com/plugin/afk-hammer',
-    github: 'https://github.com/PotenFYR-Studios/Afk-Hammer',
-    tags: ['Paper', 'Spigot', 'Moderation'],
-  },
-  {
-    name: 'LootFYR',
+    name: 'LootiFYR',
     description:
       'Deals distribution web platform streaming verified bargains from major e-commerce storefronts via WhatsApp, Telegram, and Web.',
     category: 'Web & Distribution',
@@ -261,12 +252,10 @@ export interface BountyResearcher {
   id: string;
   name: string;
   handle: string;
-  teamRole?: string;
-  age?: number | string;
-  email: string;
-  avatarUrl?: string;
+  role: string;
+  targetProject: string;
   rewardTier: 'Critical' | 'High' | 'Medium' | 'Hall of Fame';
-  findingsCount?: number;
+  findingsCount: number;
   highlight: string;
   awardedDate: string;
   socials: {
@@ -282,11 +271,11 @@ export const bountyResearchers: BountyResearcher[] = [
     id: 'res-abhay',
     name: 'Abhay Kumar',
     handle: 'abhay-kumar-ydv',
-    teamRole: 'Independent Security Researcher',
-    email: 'abhay.kumar.security@gmail.com',
+    role: 'Independent External Researcher',
+    targetProject: 'LootiFYR',
     rewardTier: 'Critical',
-    findingsCount: 3,
-    highlight: 'Coordinated security research, vulnerability assessment, and responsible disclosure fortifying PotenFYR Studios web platforms and systems.',
+    findingsCount: 1,
+    highlight: 'Discovered and responsibly disclosed 1 critical security vulnerability in the LootiFYR platform, verified and patched by PotenFYR Studios.',
     awardedDate: '2026',
     socials: {
       linkedin: 'https://www.linkedin.com/in/abhay-kumar-ydv',
@@ -296,11 +285,11 @@ export const bountyResearchers: BountyResearcher[] = [
     id: 'res-pritam',
     name: 'Pritam Kumar',
     handle: 'pritam-kumar-6a44a927b',
-    teamRole: 'Independent Security Researcher',
-    email: 'pritam.kumar.security@gmail.com',
+    role: 'Independent External Researcher',
+    targetProject: 'LootiFYR',
     rewardTier: 'Critical',
-    findingsCount: 3,
-    highlight: 'Attack surface discovery, responsible vulnerability reporting, and collaborative security verification across PotenFYR Studios ecosystem.',
+    findingsCount: 1,
+    highlight: 'Discovered and responsibly disclosed 1 critical security vulnerability in the LootiFYR platform, verified and patched by PotenFYR Studios.',
     awardedDate: '2026',
     socials: {
       linkedin: 'https://www.linkedin.com/in/pritam-kumar-6a44a927b',
@@ -309,13 +298,10 @@ export const bountyResearchers: BountyResearcher[] = [
 ];
 
 export const navLinks = [
-  { label: 'Overview', href: '#about' },
-  { label: 'Projects & Eggs', href: '#projects' },
+  { label: 'Projects', href: '#projects' },
   { label: 'Telemetry', href: '#telemetry' },
   { label: 'Tech Matrix', href: '#tech-stack' },
   { label: 'Capabilities', href: '#services' },
-  { label: 'Command Deck', href: '#terminal' },
   { label: 'Bug Bounty', href: '#bug-bounty' },
-  { label: 'Comms', href: '#community' },
 ];
 

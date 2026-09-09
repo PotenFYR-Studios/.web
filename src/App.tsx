@@ -13,9 +13,12 @@ import { BugBounty } from './components/BugBounty';
 import Community from './components/Community';
 import SocialLinks from './components/SocialLinks';
 import Footer from './components/Footer';
+import { RepoNotificationToast } from './components/RepoNotificationToast';
+import { useGitHubSync } from './lib/githubSync';
 
 function App() {
   useSmoothScroll();
+  const { notifications, dismissNotification } = useGitHubSync();
 
   return (
     <ParallaxProvider>
@@ -35,6 +38,10 @@ function App() {
           <SocialLinks />
         </main>
         <Footer />
+        <RepoNotificationToast
+          notifications={notifications}
+          onDismiss={dismissNotification}
+        />
       </div>
     </ParallaxProvider>
   );

@@ -72,6 +72,12 @@ export default function Projects() {
           (p.github && p.github.toLowerCase().endsWith(r.name.toLowerCase()))
       );
 
+      // Auto-prune safety: If a project links to an open-source PotenFYR repo that was deleted from GitHub, omit it
+      const isPotenFyrPublic = p.github?.toLowerCase().includes('github.com/potenfyr-studios/');
+      if (isPotenFyrPublic && !p.isPrivate && snapshot.repos.length > 0 && !syncedRepo) {
+        continue;
+      }
+
       if (syncedRepo) {
         processedRepoNames.add(syncedRepo.name.toLowerCase());
       }

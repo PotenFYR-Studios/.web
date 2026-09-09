@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Parallax } from 'react-scroll-parallax';
@@ -8,8 +8,6 @@ import {
   Mail,
   ExternalLink,
   Linkedin,
-  Copy,
-  Check,
   AlertTriangle,
   FileCheck,
   Users,
@@ -46,14 +44,6 @@ export const BugBounty: React.FC = () => {
     threshold: 0.1,
   });
 
-  const [copiedEmail, setCopiedEmail] = useState<string | null>(null);
-
-  const copyEmail = (email: string) => {
-    navigator.clipboard.writeText(email);
-    setCopiedEmail(email);
-    setTimeout(() => setCopiedEmail(null), 2000);
-  };
-
   return (
     <section id="bug-bounty" className="relative py-28 bg-slate-950 overflow-hidden border-t border-white/[0.08]">
       {/* Background Radial Ambient Glow */}
@@ -89,7 +79,7 @@ export const BugBounty: React.FC = () => {
               transition={{ duration: 0.7, delay: 0.2 }}
               className="mt-4 text-slate-400 text-base font-normal leading-relaxed"
             >
-              Recognizing ethical security researchers who contribute to safeguarding the PotenFYR Studios ecosystem through responsible disclosure and collaborative vulnerability reporting.
+              Recognizing ethical external security researchers who contribute to safeguarding the PotenFYR Studios ecosystem through responsible disclosure and collaborative vulnerability reporting.
             </motion.p>
           </Parallax>
         </div>
@@ -122,14 +112,19 @@ export const BugBounty: React.FC = () => {
           </div>
         </motion.div>
 
-        {/* Team Spotlight Banner */}
-        <div className="flex items-center justify-between gap-4 mb-6 border-b border-white/10 pb-4">
-          <div className="flex items-center gap-2 text-white font-bold text-lg">
-            <Users size={20} className="text-cyan-400" />
-            <span>Independent Security Research Team</span>
+        {/* External Hall of Fame Header */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 border-b border-white/10 pb-4">
+          <div>
+            <div className="flex items-center gap-2 text-white font-bold text-lg">
+              <Users size={20} className="text-cyan-400" />
+              <span>External Security Hall of Fame Inductees</span>
+            </div>
+            <p className="text-xs text-slate-400 mt-1">
+              Independent external security researchers credited for responsible vulnerability disclosure.
+            </p>
           </div>
-          <span className="text-xs font-mono px-3 py-1 rounded-full bg-cyan-950/80 text-cyan-300 border border-cyan-800/50">
-            VERIFIED RESEARCHERS
+          <span className="self-start sm:self-auto text-xs font-mono px-3 py-1 rounded-full bg-cyan-950/80 text-cyan-300 border border-cyan-800/50">
+            VERIFIED DISCLOSURES
           </span>
         </div>
 
@@ -159,13 +154,16 @@ export const BugBounty: React.FC = () => {
                             <span>{researcher.name}</span>
                           </h3>
                           <div className="text-xs font-mono text-cyan-400/90 mt-0.5">
-                            {researcher.teamRole || 'Independent Security Researcher'}
+                            {researcher.role}
                           </div>
-                          {researcher.age && (
-                            <div className="mt-1 inline-flex items-center px-2 py-0.5 text-[10px] font-mono font-semibold bg-slate-900 border border-white/10 text-slate-300 rounded-full">
-                              Age: {researcher.age}
-                            </div>
-                          )}
+                          <div className="mt-1.5 flex flex-wrap items-center gap-2">
+                            <span className="inline-flex items-center px-2 py-0.5 text-[10px] font-mono font-semibold bg-cyan-950/70 border border-cyan-800/40 text-cyan-300 rounded-md">
+                              Target: {researcher.targetProject}
+                            </span>
+                            <span className="inline-flex items-center px-2 py-0.5 text-[10px] font-mono font-semibold bg-rose-950/60 border border-rose-800/40 text-rose-300 rounded-md">
+                              1 Critical Vulnerability Patched
+                            </span>
+                          </div>
                         </div>
                       </div>
 
@@ -175,35 +173,13 @@ export const BugBounty: React.FC = () => {
                       </span>
                     </div>
 
-                    {/* Email Contact with Copy Button */}
-                    <div className="flex items-center justify-between gap-2 p-3 rounded-xl bg-slate-900/80 border border-white/10 text-xs font-mono text-slate-300 mb-5">
-                      <div className="flex items-center gap-2 truncate">
-                        <Mail size={14} className="text-cyan-400 shrink-0" />
-                        <a href={`mailto:${researcher.email}`} className="hover:text-cyan-300 transition-colors truncate">
-                          {researcher.email}
-                        </a>
-                      </div>
-                      <button
-                        onClick={() => copyEmail(researcher.email)}
-                        className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 transition-colors"
-                        title="Copy email address"
-                        aria-label="Copy email"
-                      >
-                        {copiedEmail === researcher.email ? (
-                          <Check size={14} className="text-emerald-400" />
-                        ) : (
-                          <Copy size={14} />
-                        )}
-                      </button>
-                    </div>
-
                     {/* Key Contribution / Finding Highlight */}
                     <div className="space-y-2 mb-6">
                       <div className="text-[11px] font-mono uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
                         <FileCheck size={13} className="text-cyan-400" />
-                        <span>Research & Contribution:</span>
+                        <span>Responsible Disclosure Attribution:</span>
                       </div>
-                      <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal bg-white/[0.02] p-3.5 rounded-xl border border-white/5">
+                      <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal bg-white/[0.02] p-4 rounded-xl border border-white/5">
                         "{researcher.highlight}"
                       </p>
                     </div>
@@ -242,7 +218,7 @@ export const BugBounty: React.FC = () => {
               <span>Submit a Vulnerability Report</span>
             </h3>
             <p className="text-sm text-slate-400 leading-relaxed">
-              Discovered an issue in AuthCore, Statfyr, APICordon, universal container eggs, or our platforms? Email our security desk with a reproducible PoC. Valid and worthy findings will be inducted into the Hall of Fame.
+              Discovered an issue in AuthCore, Statfyr, APICordon, universal container eggs, or our platforms? Email our desk at <span className="text-cyan-300 font-mono">support@potenfyr.in</span> with a reproducible PoC. Valid and worthy findings will be inducted into the Hall of Fame.
             </p>
             <p className="text-xs font-mono text-amber-400/90">
               * Reminder: Non-monetary program. Recognition awarded when deemed worthy.
@@ -251,11 +227,11 @@ export const BugBounty: React.FC = () => {
 
           <div className="flex flex-col sm:flex-row items-center gap-3 shrink-0">
             <a
-              href="mailto:security@potenfyr.in?subject=Vulnerability%20Report%20-%20PotenFYR%20Studios&body=Note:%20This%20is%20a%20non-monetary%20recognition-only%20program.%0A%0AComponent%20Affected:%0ASeverity:%0ASteps%20to%20Reproduce:%0AProof%20of%20Concept%20(PoC):%0AResearcher%20Name%20%26%20Public%20Profile%20(LinkedIn/GitHub):"
+              href="mailto:support@potenfyr.in?subject=Vulnerability%20Report%20-%20PotenFYR%20Studios&body=Note:%20This%20is%20a%20non-monetary%20recognition-only%20program.%0A%0AComponent%20Affected:%0ASeverity:%0ASteps%20to%20Reproduce:%0AProof%20of%20Concept%20(PoC):%0AResearcher%20Name%20%26%20Public%20Profile%20(LinkedIn/GitHub):"
               className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-sm shadow-[0_0_20px_rgba(6,182,212,0.4)] transition-all duration-300 hover:scale-[1.02]"
             >
               <Mail size={16} />
-              <span>Report to security@potenfyr.in</span>
+              <span>Report to support@potenfyr.in</span>
             </a>
             <a
               href="https://discord.gg/PRJASTKqwD"

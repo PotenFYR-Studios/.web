@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Terminal as TerminalIcon, CornerDownLeft, ShieldCheck, CheckCircle2 } from 'lucide-react';
-import { useGitHubSync } from '../lib/githubSync';
+import { useGitHubSync, getGitHubToken, setGitHubToken } from '../lib/githubSync';
 
 interface HistoryItem {
   command: string;
@@ -9,7 +9,7 @@ interface HistoryItem {
 }
 
 export const HQTerminal: React.FC = () => {
-  const { snapshot, refreshSync } = useGitHubSync();
+  const { snapshot, refreshSync, triggerTestNotification } = useGitHubSync();
   const [input, setInput] = useState('');
   const [history, setHistory] = useState<HistoryItem[]>([
     {
@@ -33,7 +33,10 @@ export const HQTerminal: React.FC = () => {
   }, [history]);
 
   const executeCommand = (cmd: string) => {
-    const trimmed = cmd.trim().toLowerCase();
+    const rawTrimmed = cmd.trim();
+    const trimmed = rawTrimmed.toLowerCase();
+    const parts = rawTrimmed.split(/\s+/);
+    const mainCmd = parts[0]?.toLowerCase();
     const time = new Date().toLocaleTimeString();
 
     if (trimmed === 'clear') {
@@ -43,7 +46,7 @@ export const HQTerminal: React.FC = () => {
 
     let out: React.ReactNode;
 
-    switch (trimmed) {
+    switch (mainCmd) {
       case 'help':
         out = (
           <div className="space-y-1 text-slate-300">
@@ -54,11 +57,65 @@ export const HQTerminal: React.FC = () => {
               <div><span className="text-cyan-400">eggs</span> : Container egg ecosystem specifications</div>
               <div><span className="text-cyan-400">stack</span> : Tech stack matrix & language share</div>
               <div><span className="text-cyan-400">sync</span> : Trigger immediate GitHub & Modrinth sync</div>
+              <div><span className="text-cyan-400">token &lt;pat&gt;</span> : Configure GitHub PAT for private repos</div>
+              <div><span className="text-cyan-400">test-popup</span> : Trigger live repository toast popup</div>
               <div><span className="text-cyan-400">clear</span> : Clear terminal history</div>
             </div>
           </div>
         );
         break;
+
+      case 'token':
+        if (parts.length === 1) {
+          const currentToken = getGitHubToken();
+          out = (
+            <div className="space-y-1 font-mono text-xs text-slate-300">
+              <p className="text-cyan-300 font-bold">GitHub Token Status:</p>
+              {currentToken ? (
+                <p className="text-emerald-400">✔ Active PAT Configured (Private repos & 5000 req/hr rate limit enabled)</p>
+              ) : (
+                <p className="text-amber-400">⚡ Unauthenticated Mode (Public repositories active). Use <span className="text-cyan-300 font-bold">token &lt;ghp_your_token&gt;</span> to enable private repo sync.</p>
+              )}
+            </div>
+          );
+        } else if (parts[1]?.toLowerCase() === 'clear') {
+          setGitHubToken(null);
+          refreshSync();
+          out = (
+            <p className="font-mono text-xs text-emerald-400">
+              ✔ Token cleared. Reverted to public organization mode.
+            </p>
+          );
+        } else {
+          const newToken = parts[1];
+          setGitHubToken(newToken);
+          refreshSync();
+          out = (
+            <div className="font-mono text-xs space-y-1">
+              <p className="text-emerald-400">✔ GitHub Token saved securely in browser session.</p>
+              <p className="text-cyan-300">🔄 Synchronizing all public & private repositories from PotenFYR-Studios...</p>
+            </div>
+          );
+        }
+        break;
+
+      case 'test-popup': {
+        const action = parts[1]?.toLowerCase() === 'remove' ? 'removed' : 'added';
+        const testName = parts[2] || (action === 'removed' ? 'Legacy-Service' : 'Nebula-Engine');
+        triggerTestNotification(action, testName, {
+          name: testName,
+          language: 'TypeScript',
+          stars: 12,
+          description: 'High-throughput microservice infrastructure deployed into PotenFYR orbit.',
+          isPrivate: parts[3]?.toLowerCase() === 'private',
+        });
+        out = (
+          <p className="font-mono text-xs text-cyan-300">
+            🔔 Live toast notification triggered for "{testName}" ({action}). Check bottom-right of screen.
+          </p>
+        );
+        break;
+      }
 
       case 'status':
         out = (
@@ -123,7 +180,7 @@ export const HQTerminal: React.FC = () => {
         out = (
           <div className="font-mono text-xs text-cyan-300 space-y-1">
             <p>🔄 Initiated auto-sync with GitHub REST API & Modrinth v2 API...</p>
-            <p className="text-emerald-400">✔ Sync complete. LocalStorage cache updated (15m TTL active).</p>
+            <p className="text-emerald-400">✔ Sync complete. Real-time metrics revalidated.</p>
           </div>
         );
         break;
