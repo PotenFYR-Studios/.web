@@ -47,10 +47,11 @@ export const OrbitingCircles: React.FC<OrbitingCirclesProps> = ({
             '--radius': radius,
             '--delay': -delay,
             '--icon-size': `${iconSize}px`,
+            animationDelay: `${-delay}s`,
           } as React.CSSProperties
         }
         className={cn(
-          'absolute flex h-[var(--icon-size)] w-[var(--icon-size)] transform-gpu animate-orbit items-center justify-center rounded-full border border-white/10 bg-slate-900/90 shadow-lg text-white backdrop-blur-md transition-all duration-300 hover:scale-125 hover:border-cyan-400 hover:z-20',
+          'absolute flex h-[var(--icon-size)] w-[var(--icon-size)] transform-gpu animate-orbit items-center justify-center rounded-full border border-white/10 bg-slate-900/90 shadow-lg text-white backdrop-blur-md transition-all duration-300 hover:scale-125 hover:border-cyan-400 hover:z-30 group cursor-pointer',
           { '[animation-direction:reverse]': reverse },
           className
         )}

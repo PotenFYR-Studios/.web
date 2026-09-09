@@ -27,17 +27,17 @@ export default function Navbar() {
             : 'bg-slate-900/50 backdrop-blur-md border border-white/[0.08]'
         }`}
       >
-        {/* Brand Logo & HQ Indicator */}
+        {/* Brand Logo & Indicator */}
         <a href="#" className="flex items-center gap-2.5 group text-white font-bold tracking-tight text-base">
           <div className="relative w-8 h-8 rounded-full bg-gradient-to-tr from-cyan-500/20 to-blue-500/20 border border-cyan-500/30 flex items-center justify-center overflow-hidden transition-all duration-500 group-hover:scale-105 group-hover:border-cyan-400 shadow-[0_0_15px_rgba(6,182,212,0.2)]">
             <span className="text-cyan-400 text-xs font-black tracking-widest">P</span>
             <div className="absolute inset-0 bg-cyan-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm" />
           </div>
           <span className="flex items-center gap-1.5 font-semibold text-sm sm:text-base text-slate-100 group-hover:text-white transition-colors">
-            PotenFYR
+            PotenFYR Studios
             <span className="hidden sm:inline-flex items-center gap-1 px-2 py-0.5 text-[9px] font-mono font-semibold text-cyan-300 bg-cyan-950/80 border border-cyan-800/50 rounded-full">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              HQ
+              ONLINE
             </span>
           </span>
         </a>

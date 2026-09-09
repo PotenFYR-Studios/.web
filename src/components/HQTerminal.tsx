@@ -17,7 +17,7 @@ export const HQTerminal: React.FC = () => {
       time: '12:00:01',
       output: (
         <div className="space-y-1 text-slate-300">
-          <p className="text-cyan-400 font-semibold">⚡ PotenFYR Studios HQ Command Deck [v1.4.0-bun]</p>
+          <p className="text-cyan-400 font-semibold">⚡ PotenFYR Studios Command Deck [v1.4.0-bun]</p>
           <p className="text-slate-400">Type <span className="text-cyan-300 font-mono font-bold">help</span> or click the shortcuts below to query the ecosystem.</p>
         </div>
       ),
@@ -67,7 +67,7 @@ export const HQTerminal: React.FC = () => {
               <CheckCircle2 size={14} />
               <span className="font-bold">STATUS: ALL SYSTEMS OPERATIONAL</span>
             </div>
-            <p>• Node: PotenFYR-HQ-Primary (Vite + React 18 + Bun)</p>
+            <p>• Node: PotenFYR-Primary (Vite + React 18 + Bun)</p>
             <p>• Public Repositories: {snapshot.repos.length} active</p>
             <p>• Modrinth Downloads: {snapshot.totalDownloads.toLocaleString()}+ verified</p>
             <p>• Security Layer: APICordon PR-Native Active</p>
@@ -153,10 +153,10 @@ export const HQTerminal: React.FC = () => {
         <div className="text-center max-w-2xl mx-auto mb-10">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-semibold uppercase tracking-widest mb-3">
             <TerminalIcon size={12} />
-            <span>HQ Command Terminal</span>
+            <span>Interactive Terminal</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-            Direct interface into <span className="text-gradient-cyan">PotenFYR HQ</span>
+            Direct interface into <span className="text-gradient-cyan">PotenFYR Studios</span>
           </h2>
           <p className="mt-3 text-slate-400 text-sm">
             Execute commands to inspect telemetry, software repositories, and server eggs.
@@ -174,7 +174,7 @@ export const HQTerminal: React.FC = () => {
               <span className="w-3 h-3 rounded-full bg-emerald-500/80 border border-emerald-400/40" />
               <span className="ml-2 text-xs text-slate-400 font-sans font-medium flex items-center gap-1.5">
                 <ShieldCheck size={13} className="text-cyan-400" />
-                potenfyr-hq-deck (bun / sh)
+                potenfyr-deck (bun / sh)
               </span>
             </div>
 

@@ -19,16 +19,16 @@ export const HQTelemetry: React.FC = () => {
     <div className="w-full bg-slate-950/80 border-y border-white/[0.08] backdrop-blur-xl relative z-20">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-2.5 flex flex-wrap items-center justify-between gap-3 text-xs">
         
-        {/* HQ Status Badge */}
+        {/* Status Badge */}
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-2 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-mono tracking-wider text-[11px]">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
             </span>
-            <span className="font-semibold uppercase">HQ ONLINE</span>
+            <span className="font-semibold uppercase">SYSTEMS ONLINE</span>
             <span className="text-emerald-500/60 hidden sm:inline">|</span>
-            <span className="text-slate-300 hidden sm:inline font-mono">SYSTEMS OPERATIONAL</span>
+            <span className="text-slate-300 hidden sm:inline font-mono">OPERATIONAL</span>
           </div>
 
           {/* Sync Engine Status */}

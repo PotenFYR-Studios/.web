@@ -19,6 +19,7 @@ export interface SyncedRepo {
   modrinthFollowers?: number;
   category?: string;
   isMaintenance?: boolean;
+  isPrivate?: boolean;
 }
 
 export interface SyncedSnapshot {
@@ -194,7 +195,7 @@ export function useGitHubSync() {
       setSnapshot(updatedSnapshot);
       setLastSyncStatus('live');
     } catch (err) {
-      console.warn('[PotenFYR HQ] Live sync warning, fallback active:', err);
+      console.warn('[PotenFYR Studios] Live sync warning, fallback active:', err);
       if (!cached) {
         setSnapshot(fallbackData as unknown as SyncedSnapshot);
         setLastSyncStatus('fallback');

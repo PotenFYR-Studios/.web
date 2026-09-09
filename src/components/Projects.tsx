@@ -12,6 +12,7 @@ import {
   Star,
   Download,
   GitBranch,
+  Lock,
 } from 'lucide-react';
 import { projects as staticProjects } from '../data/siteData';
 import { useGitHubSync, categorizeRepo } from '../lib/githubSync';
@@ -36,6 +37,7 @@ interface DisplayProject {
   link?: string;
   github?: string;
   isMaintenance?: boolean;
+  isPrivate?: boolean;
   isFlagship?: boolean;
   isAutoDiscovered?: boolean;
   isUpcoming?: boolean;
@@ -168,7 +170,7 @@ export default function Projects() {
               className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-semibold uppercase tracking-widest mb-4"
             >
               <FolderGit2 size={12} />
-              <span>HQ Software Catalog</span>
+              <span>Software Catalog</span>
             </motion.div>
 
             <motion.h2
@@ -231,6 +233,7 @@ export default function Projects() {
             {filteredProjects.map((project, idx) => {
               const isFeatured = project.isFlagship ?? false;
               const isMaintenance = project.isMaintenance ?? false;
+              const isPrivate = project.isPrivate ?? false;
               const isAutoDiscovered = project.isAutoDiscovered ?? false;
               const isUpcoming = project.isUpcoming ?? false;
 
@@ -257,7 +260,11 @@ export default function Projects() {
                           {project.category}
                         </span>
                         
-                        {isMaintenance ? (
+                        {isPrivate ? (
+                          <span className="flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-purple-300 bg-purple-950/80 border border-purple-800/50 px-2.5 py-1 rounded-full">
+                            <Lock size={10} className="text-purple-400" /> Private Repo
+                          </span>
+                        ) : isMaintenance ? (
                           <span className="flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-amber-400 bg-amber-950/80 border border-amber-800/50 px-2.5 py-1 rounded-full animate-pulse">
                             <AlertTriangle size={11} /> Maintenance
                           </span>
@@ -341,11 +348,19 @@ export default function Projects() {
                                 className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-white bg-slate-900 hover:bg-cyan-500/20 border border-white/10 hover:border-cyan-400/40 rounded-xl transition-all duration-300 hover:shadow-md"
                               >
                                 <ExternalLink size={13} className="text-cyan-400" />
-                                <span>View Release</span>
+                                <span>{project.category === 'Discord & Bots' ? 'Add to Discord' : 'Launch Platform'}</span>
                               </a>
                             )}
 
-                            {project.github && (
+                            {isPrivate ? (
+                              <span
+                                className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-medium text-slate-400 bg-slate-900/60 border border-white/5 rounded-xl cursor-default select-none"
+                                title="Source code is maintained in an internal private repository"
+                              >
+                                <Lock size={12} className="text-purple-400" />
+                                <span>Private Source</span>
+                              </span>
+                            ) : project.github ? (
                               <a
                                 href={project.github}
                                 target="_blank"
@@ -355,7 +370,7 @@ export default function Projects() {
                                 <Github size={13} />
                                 <span>Source</span>
                               </a>
-                            )}
+                            ) : null}
                           </>
                         )}
                       </div>

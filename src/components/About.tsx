@@ -60,7 +60,7 @@ export default function About() {
               transition={{ duration: 0.7, delay: 0.2 }}
               className="mt-4 text-center text-slate-400 text-base font-normal leading-relaxed"
             >
-              PotenFYR Studios is an open-source engineering headquarters. We craft high-throughput server tooling, universal hosting container eggs, game mod ecosystems, and security layers.
+              PotenFYR Studios is an open-source engineering organization. We craft high-throughput server tooling, universal hosting container eggs, game mod ecosystems, and security layers.
             </motion.p>
           </Parallax>
         </div>

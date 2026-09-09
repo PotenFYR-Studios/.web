@@ -247,7 +247,7 @@ export const HQVisualTelemetry: React.FC = () => {
               <div className="flex items-center justify-between border-b border-white/10 pb-3 mb-3 font-mono text-xs">
                 <div className="flex items-center gap-2 text-white font-bold">
                   <Activity size={14} className="text-cyan-400 animate-pulse" />
-                  <span>HQ Node Latency & Heartbeat</span>
+                  <span>Node Latency & Heartbeat</span>
                 </div>
                 <span className="text-emerald-400 font-bold">18ms AVG</span>
               </div>

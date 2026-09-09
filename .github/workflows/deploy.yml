@@ -1,4 +1,4 @@
-name: PotenFYR HQ Auto-Sync & Build
+name: PotenFYR Auto-Sync & Build
 
 on:
   push:

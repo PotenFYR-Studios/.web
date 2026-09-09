@@ -47,7 +47,7 @@ export default function Hero() {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
             <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500" />
           </span>
-          <span className="font-medium tracking-wide">PotenFYR Headquarters // Next-Gen Software Studio</span>
+          <span className="font-medium tracking-wide">PotenFYR Studios // Next-Gen Software & Infrastructure</span>
           <Sparkles size={13} className="text-cyan-400" />
         </motion.div>
 

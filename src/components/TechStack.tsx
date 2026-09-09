@@ -5,6 +5,97 @@ import { Cpu, Terminal } from 'lucide-react';
 import { OrbitingCircles } from './ui/OrbitingCircles';
 import { useGitHubSync } from '../lib/githubSync';
 
+// Branded vector icons for technology radar
+const TechIcon = ({ name }: { name: string }) => {
+  switch (name) {
+    case 'React':
+      return (
+        <svg viewBox="-11.5 -10.23 23 20.46" className="w-5 h-5">
+          <circle cx="0" cy="0" r="2.05" fill="#61DAFB" />
+          <g stroke="#61DAFB" strokeWidth="1" fill="none">
+            <ellipse rx="11" ry="4.2" />
+            <ellipse rx="11" ry="4.2" transform="rotate(60)" />
+            <ellipse rx="11" ry="4.2" transform="rotate(120)" />
+          </g>
+        </svg>
+      );
+    case 'TypeScript':
+      return (
+        <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none">
+          <rect width="24" height="24" rx="4" fill="#3178C6" />
+          <path d="M11.5 8.5H5.5V11H7V18H10V11H11.5V8.5Z" fill="white" />
+          <path d="M18.5 11.2C18.5 9.5 17 8.5 15.2 8.5C13.2 8.5 12 9.7 12 11.4H14.5C14.5 10.7 14.8 10.3 15.3 10.3C15.8 10.3 16.1 10.6 16.1 11.1C16.1 11.6 15.8 11.9 14.7 12.3C13.1 12.9 12 13.8 12 15.5C12 17.2 13.3 18.2 15.3 18.2C17.3 18.2 18.6 17 18.6 15.2H16.1C16.1 16 15.7 16.4 15.2 16.4C14.7 16.4 14.4 16.1 14.4 15.6C14.4 15 14.8 14.7 16 14.2C17.7 13.6 18.5 12.7 18.5 11.2Z" fill="white" />
+        </svg>
+      );
+    case 'Bun':
+      return (
+        <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none">
+          <path d="M12 4C7.5 4 4 7 4 11C4 14.5 6.5 17 9.5 18C10.5 18.3 11 19 12 19C13 19 13.5 18.3 14.5 18C17.5 17 20 14.5 20 11C20 7 16.5 4 12 4Z" fill="#FBF0DF" stroke="#ED8B00" strokeWidth="1.2" />
+          <circle cx="9.5" cy="11.5" r="1.2" fill="#222" />
+          <circle cx="14.5" cy="11.5" r="1.2" fill="#222" />
+          <circle cx="7.5" cy="13" r="1" fill="#FF8080" opacity="0.6" />
+          <circle cx="16.5" cy="13" r="1" fill="#FF8080" opacity="0.6" />
+          <path d="M10.5 13.5C11.5 14.5 12.5 14.5 13.5 13.5" stroke="#222" strokeWidth="1.2" strokeLinecap="round" />
+        </svg>
+      );
+    case 'Tailwind':
+      return (
+        <svg viewBox="0 0 24 24" className="w-5 h-5" fill="#06B6D4">
+          <path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.335 6.182 14.974 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C10.335 13.382 8.974 12 6.001 12z" />
+        </svg>
+      );
+    case 'Java 21':
+      return (
+        <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none">
+          <path d="M8.5 17.5C11 18 15 18 17.5 16.5C16.5 18.5 12 19.5 8 18.5C7.2 18.3 7 18.1 8.5 17.5Z" fill="#ED8B00" />
+          <path d="M7 15C10 15.5 15 15.5 18.5 14C17 16 11 17 6.5 16C5.5 15.8 5.5 15.5 7 15Z" fill="#ED8B00" />
+          <path d="M12.5 7C13.5 8 13.5 9 12 10.5C10.5 12 11 13 13 14C11 14 9 13 9.5 11.5C10 10 12 9.5 11 8C10.5 7.3 11 6.5 12.5 7Z" fill="#5382A1" />
+          <path d="M15 9C16 10 15.5 11 13.5 12.5C12 13.5 13 14 14.5 14.5C13 15 11 14 11.5 13C12.5 11.5 14 11 13.5 9.8C13.2 9.2 14 8.5 15 9Z" fill="#E76F00" />
+        </svg>
+      );
+    case 'Docker':
+      return (
+        <svg viewBox="0 0 24 24" className="w-5 h-5" fill="#2496ED">
+          <path d="M22.5 11.5c-.3-.2-1-.4-1.7-.2-.2-.5-.6-1-1.1-1.3-.2-.1-.5-.2-.7-.2-.2-1.3-1.1-2.4-2.4-2.8-.2 0-.3 0-.5.1-.3-.6-.8-1-1.4-1.3-.8-.4-1.8-.4-2.6 0l-.3.2V5h-2v2h-2V5h-2v2H5.7C5.3 7 5 7.3 5 7.7v1.6H3v2h2v1.4C5 13.5 5.8 14 6.7 14h.6c.3 1.8 1.4 3.4 3 4.3 1.2.7 2.6 1 4 1 3.5 0 6.6-2 8-5.1.5 0 1.2-.1 1.7-.5.5-.4.7-.9.7-1.3 0-.3-.1-.6-.2-.9zM7 9h2v2H7V9zm3 0h2v2h-2V9zm3 0h2v2h-2V9zm0-3h2v2h-2V6zm3 3h2v2h-2V9zm0-3h2v2h-2V6z" />
+        </svg>
+      );
+    case 'Fabric':
+      return (
+        <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none">
+          <path d="M12 2L4 6V18L12 22L20 18V6L12 2Z" stroke="#dbb98f" strokeWidth="1.5" strokeLinejoin="round" />
+          <path d="M12 6L7 9V15L12 18L17 15V9L12 6Z" fill="#dbb98f" opacity="0.4" />
+          <circle cx="12" cy="12" r="2.5" fill="#dbb98f" />
+        </svg>
+      );
+    case 'Spigot':
+      return (
+        <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none">
+          <rect x="3" y="3" width="18" height="18" rx="4" fill="#1e1e2e" stroke="#F25F4C" strokeWidth="1.5" />
+          <path d="M8 8H16V10H13V16H11V10H8V8Z" fill="#F25F4C" />
+          <circle cx="12" cy="17" r="1" fill="#F25F4C" />
+        </svg>
+      );
+    case 'Bash':
+      return (
+        <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none">
+          <rect x="3" y="4" width="18" height="16" rx="3" fill="#0f172a" stroke="#89E051" strokeWidth="1.5" />
+          <path d="M7 9L11 12L7 15" stroke="#89E051" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M13 15H17" stroke="#89E051" strokeWidth="2" strokeLinecap="round" />
+        </svg>
+      );
+    case 'PostgreSQL':
+      return (
+        <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none">
+          <ellipse cx="12" cy="6.5" rx="7.5" ry="3" fill="#336791" stroke="#60a5fa" strokeWidth="1" />
+          <path d="M4.5 6.5V11.5C4.5 13.2 7.9 14.5 12 14.5C16.1 14.5 19.5 13.2 19.5 11.5V6.5" stroke="#60a5fa" strokeWidth="1" fill="#336791" fillOpacity="0.5" />
+          <path d="M4.5 11.5V16.5C4.5 18.2 7.9 19.5 12 19.5C16.1 19.5 19.5 18.2 19.5 16.5V11.5" stroke="#60a5fa" strokeWidth="1" fill="#336791" fillOpacity="0.8" />
+        </svg>
+      );
+    default:
+      return <Terminal className="w-5 h-5 text-cyan-400" />;
+  }
+};
+
 const innerTechs = [
   { name: 'React', color: '#61DAFB' },
   { name: 'TypeScript', color: '#3178C6' },
@@ -54,7 +145,7 @@ export default function TechStack() {
               className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-semibold uppercase tracking-widest mb-4"
             >
               <Cpu size={12} />
-              <span>HQ Tech Matrix & Telemetry</span>
+              <span>Tech Matrix & Telemetry</span>
             </motion.div>
 
             <motion.h2
@@ -92,13 +183,14 @@ export default function TechStack() {
             {innerTechs.map((tech, idx) => (
               <OrbitingCircles
                 key={tech.name}
-                className="h-10 w-10 border-cyan-500/30"
-                duration={22}
-                delay={idx * 5.5}
+                className="border border-cyan-500/40 bg-slate-900/95"
+                duration={24}
+                delay={idx * 6}
                 radius={115}
-                iconSize={38}
+                iconSize={44}
               >
-                <span className="text-[11px] font-bold" style={{ color: tech.color }}>
+                <TechIcon name={tech.name} />
+                <span className="pointer-events-none absolute -bottom-7 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-slate-900/95 border border-white/20 px-2 py-0.5 text-[10px] font-mono font-semibold text-white shadow-xl opacity-0 group-hover:opacity-100 transition-all duration-200 z-30">
                   {tech.name}
                 </span>
               </OrbitingCircles>
@@ -108,14 +200,15 @@ export default function TechStack() {
             {outerTechs.map((tech, idx) => (
               <OrbitingCircles
                 key={tech.name}
-                className="h-11 w-11 border-blue-500/30"
-                duration={32}
-                delay={idx * 5.3}
-                radius={190}
+                className="border border-blue-500/40 bg-slate-900/95"
+                duration={36}
+                delay={idx * 6}
+                radius={195}
                 reverse
-                iconSize={42}
+                iconSize={44}
               >
-                <span className="text-[11px] font-bold" style={{ color: tech.color }}>
+                <TechIcon name={tech.name} />
+                <span className="pointer-events-none absolute -bottom-7 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-slate-900/95 border border-white/20 px-2 py-0.5 text-[10px] font-mono font-semibold text-white shadow-xl opacity-0 group-hover:opacity-100 transition-all duration-200 z-30">
                   {tech.name}
                 </span>
               </OrbitingCircles>

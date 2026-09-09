@@ -1,11 +1,11 @@
 <!-- markdownlint-disable -->
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:8b5cf6,50:ec4899,100:f97316&height=220&section=header&text=PotenFYR%20Web%20HQ&fontSize=48&fontColor=ffffff&fontAlignY=34&desc=Next-Gen%20Web%20Platform%20%C2%B7%20Vite%20%C2%B7%20React%20%C2%B7%20Bun&descSize=18&descAlignY=55&animation=twinkling" width="100%" alt="PotenFYR Web Headquarters banner"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:8b5cf6,50:ec4899,100:f97316&height=220&section=header&text=PotenFYR%20Studios&fontSize=48&fontColor=ffffff&fontAlignY=34&desc=Next-Gen%20Web%20Platform%20%C2%B7%20Vite%20%C2%B7%20React%20%C2%B7%20Bun&descSize=18&descAlignY=55&animation=twinkling" width="100%" alt="PotenFYR Studios banner"/>
 
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=19&pause=1200&color=06B6D4&center=true&vCenter=true&width=800&lines=Official+Web+Headquarters+for+PotenFYR+Studios;Live+GitHub+%26+Modrinth+Auto-Sync+Engine;Interactive+Command+Deck+%2B+Real-Time+Telemetry;Built+with+Vite+%2B+React+18+%2B+Bun;All+systems+operational.+Always+shipping.)](https://potenfyr.in)
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=19&pause=1200&color=06B6D4&center=true&vCenter=true&width=800&lines=Official+Website+for+PotenFYR+Studios;Live+GitHub+%26+Modrinth+Auto-Sync+Engine;Interactive+Command+Deck+%2B+Real-Time+Telemetry;Built+with+Vite+%2B+React+18+%2B+Bun;All+systems+operational.+Always+shipping.)](https://potenfyr-studios.github.io/potenfyr-web/)
 
-[![Website](https://img.shields.io/badge/Website-potenfyr.in-8b5cf6?style=for-the-badge&logo=googlechrome&logoColor=white&labelColor=1c1e26)](https://potenfyr.in)
+[![Website](https://img.shields.io/badge/Website-potenfyr--studios.github.io-8b5cf6?style=for-the-badge&logo=googlechrome&logoColor=white&labelColor=1c1e26)](https://potenfyr-studios.github.io/potenfyr-web/)
 [![Discord](https://img.shields.io/badge/Discord-Join%20us-5865F2?style=for-the-badge&logo=discord&logoColor=white&labelColor=1c1e26)](https://discord.com/invite/zUaN2FPBec)
 [![Modrinth](https://img.shields.io/badge/Modrinth-potenfyr-1bd96a?style=for-the-badge&logo=modrinth&logoColor=white&labelColor=1c1e26)](https://modrinth.com/organization/potenfyr)
 [![Email](https://img.shields.io/badge/Email-support%40potenfyr.in-f97316?style=for-the-badge&logo=gmail&logoColor=white&labelColor=1c1e26)](mailto:support@potenfyr.in)
@@ -17,9 +17,9 @@
 
 ## ⚡ Overview
 
-Welcome to the official **PotenFYR Studios Web Headquarters** repository. This platform serves as the central command deck, interactive catalog, telemetry showcase, and software portal for PotenFYR Studios: engineering Minecraft modding systems, universal container hosting eggs, automated PR security tooling, and high-concurrency cloud infrastructure.
+Welcome to the official **PotenFYR Studios** web repository. This platform serves as the central showcase, interactive catalog, telemetry deck, and software portal for PotenFYR Studios: engineering Minecraft modding systems, universal container hosting eggs, automated PR security tooling, and high-concurrency cloud infrastructure.
 
-The website is engineered for speed and immersion: powered by **Bun**, built with **Vite + React 18 + TypeScript**, styled with **Tailwind CSS**, and enhanced with **Magic UI**-inspired animations and real-time auto-sync telemetry.
+The website is engineered for speed and immersion: powered by **Bun**, built with **Vite + React 18 + TypeScript**, styled with **Tailwind CSS**, and enhanced with modern animations and real-time auto-sync telemetry.
 
 ---
 
@@ -29,19 +29,18 @@ The website is engineered for speed and immersion: powered by **Bun**, built wit
 
 | Public Repositories | Total Community Stars | Verified Modrinth Downloads | Ecosystem Status |
 |:---:|:---:|:---:|:---:|
-| [![Repos](https://img.shields.io/badge/📦_Repositories-10_Active-2ea043?style=flat-square&labelColor=1c1e26)](https://github.com/orgs/PotenFYR-Studios/repositories) | [![Stars](https://img.shields.io/badge/⭐_Stars-9_Stars-eac54f?style=flat-square&labelColor=1c1e26)](https://github.com/orgs/PotenFYR-Studios/repositories?sort=stargazers) | [![Downloads](https://img.shields.io/badge/📥_Downloads-2%2C000%2B_Verified-0078d7?style=flat-square&labelColor=1c1e26)](https://modrinth.com/organization/potenfyr) | [![Status](https://img.shields.io/badge/🟢_HQ_Status-100%25_Operational-06b6d4?style=flat-square&labelColor=1c1e26)](https://potenfyr.in) |
+| [![Repos](https://img.shields.io/badge/📦_Repositories-10_Active-2ea043?style=flat-square&labelColor=1c1e26)](https://github.com/orgs/PotenFYR-Studios/repositories) | [![Stars](https://img.shields.io/badge/⭐_Stars-9_Stars-eac54f?style=flat-square&labelColor=1c1e26)](https://github.com/orgs/PotenFYR-Studios/repositories?sort=stargazers) | [![Downloads](https://img.shields.io/badge/📥_Downloads-2%2C000%2B_Verified-0078d7?style=flat-square&labelColor=1c1e26)](https://modrinth.com/organization/potenfyr) | [![Status](https://img.shields.io/badge/🟢_Status-100%25_Operational-06b6d4?style=flat-square&labelColor=1c1e26)](https://potenfyr-studios.github.io/potenfyr-web/) |
 
 </div>
 
 ```text
-  POTENFYR HQ COMMAND SYSTEM // TELEMETRY BENCHMARK
+  POTENFYR STUDIOS // TELEMETRY BENCHMARK
   -------------------------------------------------------------
   [✓] Node Status       : Edge CDN // Systems Operational
   [✓] Build Runtime     : Bun v1.4.0 (Vite Compilation in ~1.08s)
   [✓] Auto-Sync Engine  : GitHub REST API + Modrinth v2 API
   [✓] Cache Layer       : Stale-While-Revalidate (15m TTL LocalStorage)
   [✓] Security Protocol : APICordon Automated Pull-Request Scans
-  [✓] Target Domains    : potenfyr.in & www.potenfyr.in
 ```
 
 ---
@@ -53,7 +52,7 @@ The website is engineered for speed and immersion: powered by **Bun**, built wit
   - Queries Modrinth v2 API for verified live download counts (`AuthCore`: 2,000+, `Statfyr`, `OneJumpAllJump`).
   - Safe 15-minute caching mechanism prevents unauthenticated rate limits.
   - Any future repository created under the organization automatically appears in the software catalog.
-- 💻 **Interactive HQ Command Terminal**:
+- 💻 **Interactive Command Terminal**:
   - A retro-futuristic in-browser terminal allowing visitors to run commands (`status`, `projects`, `eggs`, `stack`, `sync`, `help`) with zero page-jumping.
 - 🥚 **Universal Egg Infrastructure Matrix**:
   - Interactive specification and compatibility explorer showcasing our container eggs across Pterodactyl, Pelican, Feather Panel, PufferPanel, Docker, and Kubernetes.

@@ -34,7 +34,7 @@ export default {
         'spotlight': 'spotlight 2s ease .75s 1 forwards',
         'border-beam': 'border-beam calc(var(--duration)*1s) infinite linear',
         'shimmer-spin': 'shimmer-spin calc(var(--shimmer-duration,3s)) linear infinite',
-        'orbit': 'orbit calc(var(--duration)*1s) linear infinite',
+        'orbit': 'orbit calc(var(--duration)*1s) linear infinite calc(var(--delay, 0)*1s)',
         'meteor-effect': 'meteor 5s linear infinite',
       },
       keyframes: {

@@ -9,6 +9,7 @@ import { HQVisualTelemetry } from './components/HQVisualTelemetry';
 import TechStack from './components/TechStack';
 import Services from './components/Services';
 import { HQTerminal } from './components/HQTerminal';
+import { BugBounty } from './components/BugBounty';
 import Community from './components/Community';
 import SocialLinks from './components/SocialLinks';
 import Footer from './components/Footer';
@@ -29,6 +30,7 @@ function App() {
           <TechStack />
           <Services />
           <HQTerminal />
+          <BugBounty />
           <Community />
           <SocialLinks />
         </main>

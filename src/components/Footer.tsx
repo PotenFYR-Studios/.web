@@ -39,7 +39,7 @@ export default function Footer() {
           {/* Quick Links (3 Cols) */}
           <div className="md:col-span-3 space-y-2.5">
             <div className="text-xs font-mono font-bold uppercase tracking-wider text-slate-200">
-              HQ Architecture
+              Architecture & Ecosystem
             </div>
             <ul className="space-y-2 text-xs">
               <li><a href="#projects" className="hover:text-cyan-300 transition-colors">Projects & Eggs</a></li>

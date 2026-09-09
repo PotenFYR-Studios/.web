@@ -33,7 +33,7 @@ export default function Services() {
               className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-semibold uppercase tracking-widest mb-4"
             >
               <Cpu size={12} />
-              <span>HQ Capabilities & Scope</span>
+              <span>Capabilities & Scope</span>
             </motion.div>
 
             <motion.h2

@@ -19,6 +19,7 @@ export interface Project {
   link?: string;
   github?: string;
   isMaintenance?: boolean;
+  isPrivate?: boolean;
   isFlagship?: boolean;
   stars?: number;
   downloads?: string | number;
@@ -144,8 +145,8 @@ export const projects: Project[] = [
       'Multipurpose community management, ticket automation, and server entertainment bot built for active Discord communities.',
     category: 'Discord & Bots',
     link: 'https://top.gg/bot/1470079725106888817',
-    isMaintenance: true,
-    tags: ['Discord Bot', 'Automation', 'TypeScript'],
+    isPrivate: true,
+    tags: ['Discord Bot', 'Automation', 'TypeScript', 'Active Service'],
   },
   {
     name: 'ojaj (OneJumpAllJump)',
@@ -181,8 +182,8 @@ export const projects: Project[] = [
       'Deals distribution web platform streaming verified bargains from major e-commerce storefronts via WhatsApp, Telegram, and Web.',
     category: 'Web & Distribution',
     link: 'https://lootfyr.potenfyr.in/',
-    isMaintenance: true,
-    tags: ['E-Commerce', 'Web App', 'Deals'],
+    isPrivate: true,
+    tags: ['E-Commerce', 'Web App', 'Deals', 'Live Platform'],
   },
 ];
 
@@ -256,12 +257,65 @@ export const socialLinks: SocialLink[] = [
   },
 ];
 
+export interface BountyResearcher {
+  id: string;
+  name: string;
+  handle: string;
+  teamRole?: string;
+  age?: number | string;
+  email: string;
+  avatarUrl?: string;
+  rewardTier: 'Critical' | 'High' | 'Medium' | 'Hall of Fame';
+  findingsCount?: number;
+  highlight: string;
+  awardedDate: string;
+  socials: {
+    github?: string;
+    twitter?: string;
+    discord?: string;
+    linkedin?: string;
+  };
+}
+
+export const bountyResearchers: BountyResearcher[] = [
+  {
+    id: 'res-abhay',
+    name: 'Abhay Kumar',
+    handle: 'abhay-kumar-ydv',
+    teamRole: 'Independent Security Researcher',
+    email: 'abhay.kumar.security@gmail.com',
+    rewardTier: 'Critical',
+    findingsCount: 3,
+    highlight: 'Coordinated security research, vulnerability assessment, and responsible disclosure fortifying PotenFYR Studios web platforms and systems.',
+    awardedDate: '2026',
+    socials: {
+      linkedin: 'https://www.linkedin.com/in/abhay-kumar-ydv',
+    },
+  },
+  {
+    id: 'res-pritam',
+    name: 'Pritam Kumar',
+    handle: 'pritam-kumar-6a44a927b',
+    teamRole: 'Independent Security Researcher',
+    email: 'pritam.kumar.security@gmail.com',
+    rewardTier: 'Critical',
+    findingsCount: 3,
+    highlight: 'Attack surface discovery, responsible vulnerability reporting, and collaborative security verification across PotenFYR Studios ecosystem.',
+    awardedDate: '2026',
+    socials: {
+      linkedin: 'https://www.linkedin.com/in/pritam-kumar-6a44a927b',
+    },
+  },
+];
+
 export const navLinks = [
-  { label: 'HQ Overview', href: '#about' },
+  { label: 'Overview', href: '#about' },
   { label: 'Projects & Eggs', href: '#projects' },
   { label: 'Telemetry', href: '#telemetry' },
   { label: 'Tech Matrix', href: '#tech-stack' },
   { label: 'Capabilities', href: '#services' },
   { label: 'Command Deck', href: '#terminal' },
+  { label: 'Bug Bounty', href: '#bug-bounty' },
   { label: 'Comms', href: '#community' },
 ];
+
