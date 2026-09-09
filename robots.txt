@@ -1,0 +1,11 @@
+# PotenFYR Studios Global Robots Configuration
+User-agent: *
+Allow: /
+Disallow: /api/
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1
+
+# Host & Sitemap specifications
+Host: https://potenfyr.in
+Sitemap: https://potenfyr.in/sitemap.xml
