@@ -43,28 +43,7 @@ export interface SyncedSnapshot {
 }
 
 const STORAGE_KEY = 'potenfyr_hq_sync_v2';
-const TOKEN_KEY = 'potenfyr_gh_token';
 const AUTO_REFRESH_INTERVAL_MS = 45 * 1000; // 45 seconds live poll
-
-export function getGitHubToken(): string | null {
-  try {
-    return localStorage.getItem(TOKEN_KEY) || (import.meta.env.VITE_GITHUB_TOKEN as string) || null;
-  } catch {
-    return null;
-  }
-}
-
-export function setGitHubToken(token: string | null) {
-  try {
-    if (token) {
-      localStorage.setItem(TOKEN_KEY, token.trim());
-    } else {
-      localStorage.removeItem(TOKEN_KEY);
-    }
-  } catch {
-    // ignore
-  }
-}
 
 function loadInitialSnapshot(): SyncedSnapshot {
   const fallback = fallbackData as unknown as SyncedSnapshot;
@@ -156,20 +135,13 @@ export function useGitHubSync() {
   const fetchLive = useCallback(async () => {
     setIsSyncing(true);
     try {
-      const token = getGitHubToken();
       const headers: Record<string, string> = {
         Accept: 'application/vnd.github.v3+json',
       };
-      if (token) {
-        headers['Authorization'] = `Bearer ${token}`;
-      }
 
-      // If token is provided, query all repos (public + private), otherwise public
-      const endpoint = token
-        ? 'https://api.github.com/orgs/PotenFYR-Studios/repos?type=all&per_page=100&sort=pushed'
-        : 'https://api.github.com/orgs/PotenFYR-Studios/repos?per_page=100&sort=pushed';
-
-      const reposRes = await fetch(endpoint, { headers });
+      const reposRes = await fetch('https://api.github.com/orgs/PotenFYR-Studios/repos?per_page=100&sort=pushed', {
+        headers,
+      });
 
       if (!reposRes.ok) {
         throw new Error(`GitHub API HTTP ${reposRes.status}`);

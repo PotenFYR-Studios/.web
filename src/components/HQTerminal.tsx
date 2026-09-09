@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Terminal as TerminalIcon, CornerDownLeft, ShieldCheck, CheckCircle2 } from 'lucide-react';
-import { useGitHubSync, getGitHubToken, setGitHubToken } from '../lib/githubSync';
+import { useGitHubSync } from '../lib/githubSync';
 
 interface HistoryItem {
   command: string;
@@ -57,7 +57,7 @@ export const HQTerminal: React.FC = () => {
               <div><span className="text-cyan-400">eggs</span> : Container egg ecosystem specifications</div>
               <div><span className="text-cyan-400">stack</span> : Tech stack matrix & language share</div>
               <div><span className="text-cyan-400">sync</span> : Trigger immediate GitHub & Modrinth sync</div>
-              <div><span className="text-cyan-400">token &lt;pat&gt;</span> : Configure GitHub PAT for private repos</div>
+              <div><span className="text-cyan-400">security</span> : Zero-trust client security posture</div>
               <div><span className="text-cyan-400">test-popup</span> : Trigger live repository toast popup</div>
               <div><span className="text-cyan-400">clear</span> : Clear terminal history</div>
             </div>
@@ -65,38 +65,15 @@ export const HQTerminal: React.FC = () => {
         );
         break;
 
-      case 'token':
-        if (parts.length === 1) {
-          const currentToken = getGitHubToken();
-          out = (
-            <div className="space-y-1 font-mono text-xs text-slate-300">
-              <p className="text-cyan-300 font-bold">GitHub Token Status:</p>
-              {currentToken ? (
-                <p className="text-emerald-400">✔ Active PAT Configured (Private repos & 5000 req/hr rate limit enabled)</p>
-              ) : (
-                <p className="text-amber-400">⚡ Unauthenticated Mode (Public repositories active). Use <span className="text-cyan-300 font-bold">token &lt;ghp_your_token&gt;</span> to enable private repo sync.</p>
-              )}
-            </div>
-          );
-        } else if (parts[1]?.toLowerCase() === 'clear') {
-          setGitHubToken(null);
-          refreshSync();
-          out = (
-            <p className="font-mono text-xs text-emerald-400">
-              ✔ Token cleared. Reverted to public organization mode.
-            </p>
-          );
-        } else {
-          const newToken = parts[1];
-          setGitHubToken(newToken);
-          refreshSync();
-          out = (
-            <div className="font-mono text-xs space-y-1">
-              <p className="text-emerald-400">✔ GitHub Token saved securely in browser session.</p>
-              <p className="text-cyan-300">🔄 Synchronizing all public & private repositories from PotenFYR-Studios...</p>
-            </div>
-          );
-        }
+      case 'security':
+        out = (
+          <div className="space-y-1 font-mono text-xs text-slate-300">
+            <p className="text-emerald-400 font-bold">🛡️ Zero-Trust Security Architecture:</p>
+            <p>• Zero sensitive tokens or API secrets are stored or exposed in client bundles.</p>
+            <p>• Telemetry queries public GitHub API unauthenticated with strict rate-governance.</p>
+            <p>• Private repositories and internal pipelines are fully isolated on server runners.</p>
+          </div>
+        );
         break;
 
       case 'test-popup': {
