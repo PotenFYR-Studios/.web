@@ -1,16 +1,16 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Parallax } from 'react-scroll-parallax';
-import { Cpu, Layers, Workflow, Code2, Sparkles, Server } from 'lucide-react';
+import { Layers, Workflow, Sparkles, Server, Shield } from 'lucide-react';
 import { BorderBeam } from './ui/BorderBeam';
 import { CardSpotlight } from './ui/CardSpotlight';
 import { TextAnimate } from './ui/TextAnimate';
 
 const capabilities = [
-  { label: 'Discord Ecosystem Tooling', icon: Workflow, desc: 'Automated bots & moderation systems' },
-  { label: 'Minecraft Mods & Plugins', icon: Layers, desc: 'Fabric, Spigot, Bukkit optimization' },
-  { label: 'Backend Architecture', icon: Cpu, desc: 'High-concurrency cloud services' },
-  { label: 'Developer Solutions', icon: Code2, desc: 'APIs, SDKs, and custom libraries' },
+  { label: 'Universal Container Eggs', icon: Server, desc: 'Pterodactyl, Pelican, Feather Panel images' },
+  { label: 'Fabric & Spigot Frameworks', icon: Layers, desc: 'Session auth, game stats APIs, curses' },
+  { label: 'PR-Native API Security', icon: Shield, desc: 'APICordon automated contract audits' },
+  { label: 'Discord Systems & Bots', icon: Workflow, desc: 'Moderation pipelines, ticketing, integrations' },
 ];
 
 export default function About() {
@@ -40,7 +40,7 @@ export default function About() {
               className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-semibold uppercase tracking-widest mb-4"
             >
               <Sparkles size={12} />
-              <span>About The Studio</span>
+              <span>Studio Strategic Overview</span>
             </motion.div>
 
             <motion.h2
@@ -60,15 +60,15 @@ export default function About() {
               transition={{ duration: 0.7, delay: 0.2 }}
               className="mt-4 text-center text-slate-400 text-base font-normal leading-relaxed"
             >
-              Potenfyr Studios is a modern development studio built by tech enthusiasts. We craft high-performance mods, automation systems, and developer infrastructure.
+              PotenFYR Studios is an open-source engineering headquarters. We craft high-throughput server tooling, universal hosting container eggs, game mod ecosystems, and security layers.
             </motion.p>
           </Parallax>
         </div>
 
-        {/* Aceternity Style Bento Grid Layout */}
+        {/* Bento Grid Layout */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
 
-          {/* Main Overview Bento Card (Spans full 3 columns) */}
+          {/* Main Overview Bento Card */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -85,19 +85,19 @@ export default function About() {
                   Infrastructure Built for Scale & Reliability
                 </h3>
                 <p className="text-slate-300 text-sm leading-relaxed font-normal max-w-2xl">
-                  Our core mission is delivering developer-first utilities and infrastructure. Whether it’s high-frequency Minecraft authentication mods, automated Discord moderation bots, or real-time analytics platforms, we engineer for maximum throughput and seamless developer UX.
+                  Our core mission is delivering developer-first utilities and infrastructure. From universal container eggs running 50+ languages across panel hosts to Fabric authentication engines deployed on production Minecraft servers, our software is engineered for maximum throughput and 99.99% operational reliability.
                 </p>
               </div>
 
-              <div className="flex flex-col sm:flex-row md:flex-col gap-3 shrink-0">
+              <div className="flex flex-col sm:flex-row md:flex-col gap-3 shrink-0 w-full sm:w-auto">
                 <span className="px-4 py-2 text-xs font-semibold text-cyan-300 bg-cyan-950/80 border border-cyan-800/40 rounded-xl text-center">
-                  Minecraft Ecosystem
+                  🥚 Universal Hosting Eggs
+                </span>
+                <span className="px-4 py-2 text-xs font-semibold text-emerald-300 bg-emerald-950/80 border border-emerald-800/40 rounded-xl text-center">
+                  🧩 2,000+ Mod Downloads
                 </span>
                 <span className="px-4 py-2 text-xs font-semibold text-blue-300 bg-blue-950/80 border border-blue-800/40 rounded-xl text-center">
-                  Discord Automation
-                </span>
-                <span className="px-4 py-2 text-xs font-semibold text-indigo-300 bg-indigo-950/80 border border-indigo-800/40 rounded-xl text-center">
-                  REST & WebSockets
+                  🔐 PR-Native API Defense
                 </span>
               </div>
             </CardSpotlight>

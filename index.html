@@ -1,12 +1,140 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Potenfyr Studios</title>
+    <meta name="theme-color" content="#030712" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://potenfyr.in/" />
+
+    <!-- Search Engine Indexing & Robots -->
+    <title>PotenFYR Studios | Next-Gen Software & Infrastructure HQ</title>
+    <meta name="title" content="PotenFYR Studios | Next-Gen Software & Infrastructure HQ" />
+    <meta name="description" content="PotenFYR Studios is a high-performance software engineering headquarters crafting universal hosting container eggs, Fabric and Spigot Minecraft mods, PR-native API security, and high-concurrency cloud systems." />
+    <meta name="keywords" content="PotenFYR Studios, PotenFYR, Minecraft mods, Fabric mods, AuthCore, Statfyr, Minecraft-Eggs, Prog-Language-Eggs, Database-Eggs, APICordon, Pterodactyl egg, Pelican panel egg, Feather panel egg, Spigot plugins, Discord bots, open source software" />
+    <meta name="author" content="PotenFYR Studios" />
+    <meta name="publisher" content="PotenFYR Studios" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+    <!-- Open Graph / Facebook / Discord Embeds -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://potenfyr.in/" />
+    <meta property="og:site_name" content="PotenFYR Studios" />
+    <meta property="og:title" content="PotenFYR Studios | Next-Gen Software & Infrastructure HQ" />
+    <meta property="og:description" content="High-performance open-source software, universal hosting container eggs (18+ Minecraft types, 50+ languages), Fabric & Spigot mods, and API defense." />
+    <meta property="og:image" content="https://potenfyr.in/favicon.svg" />
+    <meta property="og:image:width" content="512" />
+    <meta property="og:image:height" content="512" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card Embeds -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://potenfyr.in/" />
+    <meta name="twitter:title" content="PotenFYR Studios | Software Headquarters" />
+    <meta name="twitter:description" content="Engineering high-performance digital systems, Minecraft tools, universal hosting eggs, and developer infrastructure." />
+    <meta name="twitter:image" content="https://potenfyr.in/favicon.svg" />
+
+    <!-- Performance: Preconnect to Font CDNs -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- JSON-LD Structured Data Schema for Search Engines (Google, Bing, Yahoo, Yandex) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://potenfyr.in/#organization",
+          "name": "PotenFYR Studios",
+          "alternateName": ["PotenFYR", "PotenFYR-Studios"],
+          "url": "https://potenfyr.in/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://potenfyr.in/favicon.svg",
+            "caption": "PotenFYR Studios Logo"
+          },
+          "description": "PotenFYR Studios is a creative hub for game development, universal hosting infrastructure, automation tools, and community-driven open-source projects.",
+          "email": "support@potenfyr.in",
+          "sameAs": [
+            "https://github.com/PotenFYR-Studios",
+            "https://modrinth.com/organization/potenfyr",
+            "https://discord.gg/zUaN2FPBec",
+            "https://discord.gg/PRJASTKqwD"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://potenfyr.in/#website",
+          "url": "https://potenfyr.in/",
+          "name": "PotenFYR Studios",
+          "publisher": {
+            "@id": "https://potenfyr.in/#organization"
+          },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://potenfyr.in/#projects?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "AuthCore",
+          "applicationCategory": "GameApplication",
+          "operatingSystem": "Fabric, Minecraft 1.20+",
+          "description": "Advanced server-side authentication and session defense framework for Minecraft servers.",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "downloadUrl": "https://modrinth.com/mod/authcore",
+          "author": {
+            "@id": "https://potenfyr.in/#organization"
+          }
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "Minecraft-Eggs",
+          "applicationCategory": "DeveloperApplication",
+          "operatingSystem": "Linux, Docker, Pterodactyl, Pelican Panel",
+          "description": "Universal Minecraft egg ecosystem supporting Vanilla, Paper, Purpur, Fabric, Forge, NeoForge, Velocity, Bedrock, and 18+ server types.",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "codeRepository": "https://github.com/PotenFYR-Studios/Minecraft-Eggs",
+          "author": {
+            "@id": "https://potenfyr.in/#organization"
+          }
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "Statfyr",
+          "applicationCategory": "DeveloperApplication",
+          "operatingSystem": "Paper, Spigot, Bukkit",
+          "description": "Blazing-fast REST API plugin for Minecraft exposing real-time player statistics and analytics.",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "downloadUrl": "https://modrinth.com/plugin/statfyr",
+          "author": {
+            "@id": "https://potenfyr.in/#organization"
+          }
+        }
+      ]
+    }
+    </script>
   </head>
-  <body>
+  <body class="bg-[#030712] text-white selection:bg-cyan-500/30 selection:text-white">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

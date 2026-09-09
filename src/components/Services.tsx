@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Parallax } from 'react-scroll-parallax';
 import { Cpu, Wrench } from 'lucide-react';
+
 import { services } from '../data/siteData';
 import { CardSpotlight } from './ui/CardSpotlight';
 import { TextAnimate } from './ui/TextAnimate';
@@ -32,7 +33,7 @@ export default function Services() {
               className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-semibold uppercase tracking-widest mb-4"
             >
               <Cpu size={12} />
-              <span>Capabilities & Scope</span>
+              <span>HQ Capabilities & Scope</span>
             </motion.div>
 
             <motion.h2
@@ -41,7 +42,7 @@ export default function Services() {
               transition={{ duration: 0.7, delay: 0.1 }}
               className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight"
             >
-              <TextAnimate text="Capabilities designed for scale." />
+              <TextAnimate text="Capabilities designed for extreme scale." />
             </motion.h2>
 
             <motion.p
@@ -50,7 +51,7 @@ export default function Services() {
               transition={{ duration: 0.7, delay: 0.2 }}
               className="mt-4 text-slate-400 text-base font-normal leading-relaxed"
             >
-              From low-level game modding to distributed backend pipelines, explore our core technical offerings.
+              From low-level game engine mods and container egg virtualization to automated PR security scanners.
             </motion.p>
           </Parallax>
         </div>
@@ -70,8 +71,15 @@ export default function Services() {
               >
                 <CardSpotlight className="h-full p-7 flex flex-col justify-between group hover:border-cyan-500/40 transition-all duration-300">
                   <div>
-                    <div className="w-12 h-12 rounded-2xl bg-slate-900 border border-white/10 flex items-center justify-center text-slate-300 group-hover:text-cyan-400 group-hover:border-cyan-500/30 group-hover:bg-cyan-500/10 transition-all duration-300 mb-5">
-                      <Icon size={22} />
+                    <div className="flex items-center justify-between mb-5">
+                      <div className="w-12 h-12 rounded-2xl bg-slate-900 border border-white/10 flex items-center justify-center text-slate-300 group-hover:text-cyan-400 group-hover:border-cyan-500/30 group-hover:bg-cyan-500/10 transition-all duration-300">
+                        <Icon size={22} />
+                      </div>
+                      {service.badge && (
+                        <span className="px-2.5 py-0.5 text-[10px] font-mono uppercase tracking-wider text-cyan-400 bg-cyan-950/60 border border-cyan-800/40 rounded-full">
+                          {service.badge}
+                        </span>
+                      )}
                     </div>
 
                     <h3 className="text-lg font-bold text-white tracking-tight group-hover:text-cyan-300 transition-colors">
@@ -83,9 +91,12 @@ export default function Services() {
                     </p>
                   </div>
 
-                  <div className="mt-6 pt-4 border-t border-white/5 flex items-center gap-1 text-xs font-semibold text-slate-500 group-hover:text-cyan-400 transition-colors">
-                    <Wrench size={12} />
-                    <span>Technical Excellence</span>
+                  <div className="mt-6 pt-4 border-t border-white/5 flex items-center justify-between text-xs font-semibold text-slate-500 group-hover:text-cyan-400 transition-colors">
+                    <span className="flex items-center gap-1">
+                      <Wrench size={12} />
+                      <span>Production Verified</span>
+                    </span>
+                    <span className="text-[10px] font-mono text-emerald-400/80">99.9% UPTIME</span>
                   </div>
                 </CardSpotlight>
               </motion.div>
