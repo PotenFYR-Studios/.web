@@ -23,6 +23,34 @@ Allow: /
 User-agent: Yandex
 Allow: /
 
+# AI / answer-engine crawlers: explicitly welcome (2026 GEO best practice)
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+# LLM guidance
+# See https://potenfyr.in/llms.txt for an AI-readable site summary
+
 # Sitemaps
 Sitemap: https://potenfyr.in/sitemap.xml
 Host: https://potenfyr.in
