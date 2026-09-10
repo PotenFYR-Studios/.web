@@ -161,7 +161,7 @@ When ready to link a custom domain (e.g., `potenfyr.in`):
 
 ## 📜 License
 
-This project is licensed under the MIT License: see the [LICENSE](LICENSE) file for details.
+This project is licensed under the Apache License 2.0 with the Commons Clause: see the [LICENSE](LICENSE) file for details. Free to fork, modify, use, and build products or services around it - but the software itself may not be sold as a paid product.
 
 <div align="center">
 
