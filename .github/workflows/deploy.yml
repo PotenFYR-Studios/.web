@@ -40,6 +40,8 @@ jobs:
         run: bun run typecheck
 
       - name: Build Web Application
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: bun run build
 
       - name: Deploy to GitHub Pages
