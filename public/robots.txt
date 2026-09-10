@@ -1,5 +1,5 @@
 # PotenFYR Studios Global Robots Configuration
-# https://potenfyr.in / https://potenfyr-studios.github.io/potenfyr-web/
+# Active domain is applied at build time by scripts/resolve-domain.ts
 
 User-agent: *
 Allow: /
@@ -25,5 +25,4 @@ Allow: /
 
 # Sitemaps
 Sitemap: https://potenfyr.in/sitemap.xml
-Sitemap: https://potenfyr-studios.github.io/potenfyr-web/sitemap.xml
 Host: https://potenfyr.in
