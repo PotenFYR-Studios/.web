@@ -54,3 +54,7 @@ coverage
 
 # Misc
 Thumbs.db
+
+# --- PotenFYR Studios: baseline hygiene ---
+.env.*
+!.env.example

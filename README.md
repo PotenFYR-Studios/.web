@@ -163,6 +163,10 @@ When ready to link a custom domain (e.g., `potenfyr.in`):
 
 This project is licensed under the Apache License 2.0 with the Commons Clause: see the [LICENSE](LICENSE) file for details. Free to fork, modify, use, and build products or services around it - but the software itself may not be sold as a paid product.
 
+---
+
+Built by **[PotenFYR Studios](https://github.com/PotenFYR-Studios)** · [potenfyr.in](https://potenfyr.in) · Part of the **PotenFYR Studios** open-source ecosystem.
+
 <div align="center">
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:f97316,50:ec4899,100:8b5cf6&height=120&section=footer&text=Made%20with%20%E2%9D%A4%EF%B8%8F%20by%20PotenFYR%20Studios&fontSize=22&fontColor=ffffff&animation=twinkling" width="100%" alt="footer banner"/>
