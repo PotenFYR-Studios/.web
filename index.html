@@ -6,9 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#030712" />
 
-    <!-- Canonical & Sitemap URLs -->
-    <link rel="canonical" href="https://potenfyr.in/" />
-    <link rel="alternate" href="https://potenfyr-studios.github.io/potenfyr-web/" hreflang="x-default" />
+    <!-- Canonical & Sitemap URLs (self-references are rewritten to the active domain at build time) -->
+    <link rel="canonical" href="https://potenfyr-studios.github.io/.web/" />
     <link rel="sitemap" type="application/xml" title="Sitemap" href="./sitemap.xml" />
 
     <!-- Search Engine Indexing & Robots -->
@@ -30,11 +29,11 @@
 
     <!-- Open Graph / Facebook / Discord Embeds -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://potenfyr.in/" />
+    <meta property="og:url" content="https://potenfyr-studios.github.io/.web/" />
     <meta property="og:site_name" content="PotenFYR Studios" />
     <meta property="og:title" content="PotenFYR Studios | Next-Gen Software & Infrastructure" />
     <meta property="og:description" content="High-performance open-source software, universal hosting container eggs (18+ Minecraft types, 50+ languages), Fabric & Spigot mods, and API defense." />
-    <meta property="og:image" content="https://potenfyr-studios.github.io/potenfyr-web/favicon.svg" />
+    <meta property="og:image" content="https://potenfyr-studios.github.io/.web/favicon.svg" />
     <meta property="og:image:alt" content="PotenFYR Studios Brand Emblem" />
     <meta property="og:image:width" content="512" />
     <meta property="og:image:height" content="512" />
@@ -42,10 +41,10 @@
 
     <!-- Twitter Card Embeds -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="https://potenfyr.in/" />
+    <meta name="twitter:url" content="https://potenfyr-studios.github.io/.web/" />
     <meta name="twitter:title" content="PotenFYR Studios | Software Engineering & Infrastructure" />
     <meta name="twitter:description" content="Engineering high-performance digital systems, Minecraft tools, universal hosting eggs, and developer infrastructure." />
-    <meta name="twitter:image" content="https://potenfyr-studios.github.io/potenfyr-web/favicon.svg" />
+    <meta name="twitter:image" content="https://potenfyr-studios.github.io/.web/favicon.svg" />
     <meta name="twitter:image:alt" content="PotenFYR Studios Brand Emblem" />
 
     <!-- Performance: Preconnect to Font CDNs -->
@@ -60,13 +59,13 @@
       "@graph": [
         {
           "@type": "Organization",
-          "@id": "https://potenfyr.in/#organization",
+          "@id": "https://potenfyr-studios.github.io/.web/#organization",
           "name": "PotenFYR Studios",
           "alternateName": ["PotenFYR", "PotenFYR-Studios"],
-          "url": "https://potenfyr.in/",
+          "url": "https://potenfyr-studios.github.io/.web/",
           "logo": {
             "@type": "ImageObject",
-            "url": "https://potenfyr-studios.github.io/potenfyr-web/favicon.svg",
+            "url": "https://potenfyr-studios.github.io/.web/favicon.svg",
             "caption": "PotenFYR Studios Logo"
           },
           "description": "PotenFYR Studios is a creative engineering organization crafting universal game server hosting containers, Fabric and Spigot Minecraft mods, automated API defense tooling, and high-concurrency developer infrastructure.",
@@ -80,15 +79,15 @@
         },
         {
           "@type": "WebSite",
-          "@id": "https://potenfyr.in/#website",
-          "url": "https://potenfyr.in/",
+          "@id": "https://potenfyr-studios.github.io/.web/#website",
+          "url": "https://potenfyr-studios.github.io/.web/",
           "name": "PotenFYR Studios",
           "publisher": {
-            "@id": "https://potenfyr.in/#organization"
+            "@id": "https://potenfyr-studios.github.io/.web/#organization"
           },
           "potentialAction": {
             "@type": "SearchAction",
-            "target": "https://potenfyr.in/#projects?q={search_term_string}",
+            "target": "https://potenfyr-studios.github.io/.web/#projects?q={search_term_string}",
             "query-input": "required name=search_term_string"
           }
         },
@@ -106,7 +105,7 @@
           "downloadUrl": "https://modrinth.com/mod/authcore",
           "codeRepository": "https://github.com/PotenFYR-Studios/AuthCore",
           "author": {
-            "@id": "https://potenfyr.in/#organization"
+            "@id": "https://potenfyr-studios.github.io/.web/#organization"
           }
         },
         {
@@ -122,7 +121,7 @@
           },
           "codeRepository": "https://github.com/PotenFYR-Studios/Minecraft-Eggs",
           "author": {
-            "@id": "https://potenfyr.in/#organization"
+            "@id": "https://potenfyr-studios.github.io/.web/#organization"
           }
         },
         {
@@ -138,7 +137,7 @@
           },
           "codeRepository": "https://github.com/PotenFYR-Studios/Prog-Language-Eggs",
           "author": {
-            "@id": "https://potenfyr.in/#organization"
+            "@id": "https://potenfyr-studios.github.io/.web/#organization"
           }
         },
         {
@@ -154,7 +153,7 @@
           },
           "codeRepository": "https://github.com/PotenFYR-Studios/Database-Eggs",
           "author": {
-            "@id": "https://potenfyr.in/#organization"
+            "@id": "https://potenfyr-studios.github.io/.web/#organization"
           }
         },
         {
@@ -171,7 +170,7 @@
           "downloadUrl": "https://modrinth.com/plugin/statfyr",
           "codeRepository": "https://github.com/PotenFYR-Studios/statfyr",
           "author": {
-            "@id": "https://potenfyr.in/#organization"
+            "@id": "https://potenfyr-studios.github.io/.web/#organization"
           }
         },
         {
@@ -187,13 +186,13 @@
           },
           "codeRepository": "https://github.com/PotenFYR-Studios/APICordon",
           "author": {
-            "@id": "https://potenfyr.in/#organization"
+            "@id": "https://potenfyr-studios.github.io/.web/#organization"
           }
         }
       ]
     }
     </script>
-    <script type="module" crossorigin src="./assets/index-Ci8FzUAC.js"></script>
+    <script type="module" crossorigin src="./assets/index-B94q2VUY.js"></script>
     <link rel="stylesheet" crossorigin href="./assets/index-Bb7xq93c.css">
   </head>
   <body class="bg-[#030712] text-white selection:bg-cyan-500/30 selection:text-white">
