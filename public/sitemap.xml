@@ -3,22 +3,15 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  <!-- Single-page site: potenfyr.in/ is the only server-visible URL. Project
+       documentation lives on its own domains (authcore.potenfyr.in,
+       apicordon.docs.potenfyr.in, botlists.docs.potenfyr.in, fyrwall.docs.potenfyr.in,
+       nest.potenfyr.in) and ships its own sitemap. Sitemap URLs must share the
+       host of this file, so cross-host and undeployed domains are excluded. -->
   <url>
     <loc>https://potenfyr.in/</loc>
-    <lastmod>2026-09-09T12:00:00+00:00</lastmod>
-    <changefreq>daily</changefreq>
+    <lastmod>2026-09-12T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://authcore.potenfyr.in/</loc>
-    <lastmod>2026-09-09T12:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://lootfyr.potenfyr.in/</loc>
-    <lastmod>2026-09-09T12:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
   </url>
 </urlset>
