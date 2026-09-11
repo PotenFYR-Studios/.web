@@ -21,7 +21,7 @@ export default function Footer() {
           <div className="md:col-span-6 space-y-3">
             <a href="#" className="flex items-center gap-2.5 text-white font-bold tracking-tight text-lg">
               <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-cyan-500/20 to-blue-500/20 border border-cyan-500/30 flex items-center justify-center">
-                <span className="text-cyan-400 text-xs font-black">P</span>
+                <img src="./favicon.png" alt="PotenFYR Studios logo" className="w-full h-full object-contain p-[3px]" />
               </div>
               <span>PotenFYR Studios</span>
             </a>

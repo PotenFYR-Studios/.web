@@ -30,7 +30,7 @@ export default function Navbar() {
         {/* Brand Logo & Indicator */}
         <a href="#" className="flex items-center gap-2.5 group text-white font-bold tracking-tight text-base">
           <div className="relative w-8 h-8 rounded-full bg-gradient-to-tr from-cyan-500/20 to-blue-500/20 border border-cyan-500/30 flex items-center justify-center overflow-hidden transition-all duration-500 group-hover:scale-105 group-hover:border-cyan-400 shadow-[0_0_15px_rgba(6,182,212,0.2)]">
-            <span className="text-cyan-400 text-xs font-black tracking-widest">P</span>
+            <img src="./favicon.png" alt="PotenFYR Studios logo" className="w-full h-full object-contain p-[3px]" />
             <div className="absolute inset-0 bg-cyan-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm" />
           </div>
           <span className="font-semibold text-sm sm:text-base text-slate-100 group-hover:text-white transition-colors">
