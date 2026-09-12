@@ -95,7 +95,7 @@ function isGitHubPagesUrl(url: string): boolean {
 async function main() {
   const { siteUrl, source } = await resolveActiveDomain();
   // A CNAME file must never contain a github.io host, so only genuinely custom
-  // domains get the lock-in file — even if the reported URL drifts from DEFAULT_URL.
+  // domains get the lock-in file, even if the reported URL drifts from DEFAULT_URL.
   const isCustom = siteUrl !== DEFAULT_URL && !isGitHubPagesUrl(siteUrl);
 
   // 1. Point every self-reference at the domain that is actually live.
@@ -116,12 +116,12 @@ async function main() {
   const cnamePath = resolve(DIST_DIR, 'CNAME');
   if (isCustom) {
     writeFileSync(cnamePath, `${siteUrl.replace(/^https?:\/\//, '')}\n`, 'utf-8');
-    console.log(`[Domain] Active: ${siteUrl} (${source}) — CNAME written to lock the custom domain.`);
+    console.log(`[Domain] Active: ${siteUrl} (${source}); CNAME written to lock the custom domain.`);
   } else if (existsSync(cnamePath)) {
     unlinkSync(cnamePath);
-    console.log(`[Domain] Active: ${siteUrl} (${source}) — stale CNAME removed so the default GitHub Pages URL stays.`);
+    console.log(`[Domain] Active: ${siteUrl} (${source}); stale CNAME removed so the default GitHub Pages URL stays.`);
   } else {
-    console.log(`[Domain] Active: ${siteUrl} (${source}) — no custom domain, staying on the default GitHub Pages URL.`);
+    console.log(`[Domain] Active: ${siteUrl} (${source}); no custom domain, staying on the default GitHub Pages URL.`);
   }
   console.log(`[Domain] Rewrote self-referencing URLs in ${rewritten} file(s).`);
 }

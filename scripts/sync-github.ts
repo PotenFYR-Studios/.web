@@ -65,7 +65,7 @@ interface SyncedSnapshot {
 }
 
 const ORG_NAME = 'PotenFYR-Studios';
-const MODRINTH_SLUGS = ['authcore', 'statfyr', 'onejumpalljump', 'echoingdeaths'];
+const MODRINTH_SLUGS = ['authcore', 'statfyr', 'onejumpalljump', 'echoing-deaths'];
 const TARGET_FILE = resolve(import.meta.dir, '../src/data/syncedData.json');
 
 async function runSync() {

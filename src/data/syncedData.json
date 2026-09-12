@@ -356,6 +356,12 @@
       "downloads": 26,
       "followers": 2,
       "icon": "https://cdn.modrinth.com/data/Vpr0ie3p/0f876b25fcb37f17a92af7445ff5528c61c7d6ca_96.webp"
+    },
+    "echoing-deaths": {
+      "slug": "echoing-deaths",
+      "downloads": 33,
+      "followers": 2,
+      "icon": "https://cdn.modrinth.com/data/GL9wQMsS/6e2e72b2fe298621900ecb097ce7357cd0285e1a_96.webp"
     }
   },
   "languages": {
@@ -370,5 +376,5 @@
   },
   "totalStars": 15,
   "totalForks": 2,
-  "totalDownloads": 2088
+  "totalDownloads": 2121
 }

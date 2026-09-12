@@ -264,7 +264,7 @@ export function useGitHubSync() {
         ...fallbackData.modrinth,
       };
 
-      const slugs = ['authcore', 'statfyr', 'onejumpalljump', 'echoingdeaths'];
+      const slugs = ['authcore', 'statfyr', 'onejumpalljump', 'echoing-deaths'];
       await Promise.all(
         slugs.map(async (slug) => {
           try {

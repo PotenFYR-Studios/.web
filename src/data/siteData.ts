@@ -165,8 +165,9 @@ export const projects: Project[] = [
     description:
       'Minecraft plugin adding immersive death-based curses and thematic debuffs to nearby players whenever a death event triggers.',
     category: 'Minecraft Tooling',
-    link: 'https://modrinth.com/plugin/echoingdeaths',
+    link: 'https://modrinth.com/plugin/echoing-deaths',
     github: 'https://github.com/PotenFYR-Studios/EchoingDeaths',
+    modrinthSlug: 'echoing-deaths',
     tags: ['Paper', 'Spigot', 'Immersion'],
   },
   {
