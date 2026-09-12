@@ -2,7 +2,7 @@ name: PotenFYR Auto-Sync & Build
 
 on:
   push:
-    branches: [main]
+    branches: [master]
   schedule:
     # Auto-sync every 6 hours to fetch newest repos, stars, and releases
     - cron: '0 */6 * * *'
@@ -46,7 +46,7 @@ jobs:
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
-        if: github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/master'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
