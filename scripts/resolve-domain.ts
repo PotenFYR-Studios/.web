@@ -111,7 +111,19 @@ async function main() {
     rewritten++;
   }
 
-  // 2. Lock the custom domain: GitHub Pages branch publishing derives the domain from
+  // 2. Stamp the sitemap with the real build date so `lastmod` never goes stale.
+  const sitemapPath = resolve(DIST_DIR, 'sitemap.xml');
+  if (existsSync(sitemapPath)) {
+    const today = new Date().toISOString().slice(0, 10);
+    const stamped = readFileSync(sitemapPath, 'utf-8').replace(
+      /<lastmod>[^<]*<\/lastmod>/g,
+      `<lastmod>${today}</lastmod>`,
+    );
+    writeFileSync(sitemapPath, stamped, 'utf-8');
+    console.log(`[Domain] Sitemap lastmod stamped ${today}.`);
+  }
+
+  // 3. Lock the custom domain: GitHub Pages branch publishing derives the domain from
   //    the CNAME file, so a deploy without it clears the Settings -> Pages entry.
   const cnamePath = resolve(DIST_DIR, 'CNAME');
   if (isCustom) {

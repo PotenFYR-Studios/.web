@@ -12,7 +12,8 @@
     "domain:resolve": "bun run scripts/resolve-domain.ts",
     "lint": "eslint .",
     "preview": "vite preview",
-    "typecheck": "tsc --noEmit -p tsconfig.app.json"
+    "typecheck": "tsc --noEmit -p tsconfig.app.json",
+    "og:image": "bun scripts/og/build-og.mjs"
   },
   "dependencies": {
     "clsx": "^2.1.1",

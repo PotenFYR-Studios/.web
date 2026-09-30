@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>PotenFYR Studios link preview</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html, body { width: 1200px; height: 630px; overflow: hidden; }
+      body {
+        font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+        background: #030712;
+        color: #fff;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .card {
+        position: relative;
+        width: 1200px;
+        height: 630px;
+        padding: 62px 84px 56px;
+        display: flex;
+        flex-direction: column;
+        background:
+          radial-gradient(760px 460px at 96% 4%, rgba(6, 182, 212, 0.20), transparent 64%),
+          radial-gradient(760px 520px at -6% 104%, rgba(56, 189, 248, 0.14), transparent 62%),
+          linear-gradient(160deg, #061021 0%, #030712 52%, #03050d 100%);
+        overflow: hidden;
+      }
+
+      /* Full-bleed blueprint grid, radially masked so it never shows an orphan seam */
+      .grid {
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(to right, rgba(148, 163, 184, 0.10) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(148, 163, 184, 0.10) 1px, transparent 1px);
+        background-size: 64px 64px;
+        -webkit-mask-image: radial-gradient(760px 430px at 34% 48%, #000 0%, rgba(0, 0, 0, 0.55) 58%, transparent 88%);
+        mask-image: radial-gradient(760px 430px at 34% 48%, #000 0%, rgba(0, 0, 0, 0.55) 58%, transparent 88%);
+      }
+
+      /* One accent, one direction: brand signal that survives a centre crop */
+      .edge {
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 5px;
+        background: linear-gradient(90deg, #38bdf8 0%, #22d3ee 46%, #06b6d4 100%);
+      }
+
+      .content {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+
+      .lockup { display: flex; align-items: center; gap: 20px; }
+      .lockup img { width: 60px; height: 60px; display: block; }
+      .lockup .name {
+        font-size: 27px;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        line-height: 1.1;
+      }
+      .lockup .name em { font-style: normal; color: #38bdf8; }
+      .lockup .sub {
+        margin-top: 7px;
+        font-size: 15px;
+        font-weight: 500;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: #94a3b8;
+      }
+
+      .body {
+        margin-top: auto;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 56px;
+      }
+
+      .copy { max-width: 700px; }
+
+      h1 {
+        font-size: 67px;
+        line-height: 1.14;
+        font-weight: 800;
+        letter-spacing: -0.035em;
+      }
+      h1 .grad {
+        background: linear-gradient(96deg, #bae6fd 0%, #38bdf8 52%, #22d3ee 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      p.lede {
+        margin-top: 26px;
+        font-size: 24px;
+        line-height: 1.5;
+        color: #a8b4c6;
+        max-width: none;
+      }
+
+      .stats {
+        display: flex;
+        flex-direction: column;
+        min-width: 306px;
+        padding-bottom: 4px;
+      }
+      .stats .eyebrow {
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: #7c8ba1;
+        padding-bottom: 16px;
+      }
+      .stat {
+        border-top: 1px solid rgba(148, 163, 184, 0.22);
+        padding: 18px 0 20px;
+      }
+      .stat.last { border-bottom: 1px solid rgba(148, 163, 184, 0.22); }
+      .stat b {
+        display: block;
+        font-size: 34px;
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        color: #e2f4ff;
+      }
+      .stat span {
+        display: block;
+        margin-top: 4px;
+        font-size: 16px;
+        font-weight: 500;
+        color: #8fa0b6;
+      }
+
+      .foot {
+        margin-top: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-top: 1px solid rgba(148, 163, 184, 0.18);
+        padding-top: 22px;
+        font-size: 19px;
+        font-weight: 500;
+      }
+      .foot .domain { color: #22d3ee; }
+      .foot .repo { color: #8fa0b6; }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <div class="grid"></div>
+      <div class="edge"></div>
+
+      <div class="content">
+        <div class="lockup">
+          <img src="../../public/favicon.png" alt="" />
+          <div>
+            <div class="name">PotenFYR<em>·</em>Studios</div>
+            <div class="sub">Open source · free forever</div>
+          </div>
+        </div>
+
+        <div class="body">
+          <div class="copy">
+            <h1>
+              Engineering<br />
+              <span class="grad">high-performance</span><br />
+              digital systems.
+            </h1>
+            <p class="lede">
+              Hosting container eggs, Minecraft mods,<br />
+              and API security tooling.
+            </p>
+          </div>
+
+          <div class="stats">
+            <div class="eyebrow">Ecosystem</div>
+            <div class="stat">
+              <b>18+</b>
+              <span>Minecraft server types</span>
+            </div>
+            <div class="stat">
+              <b>50+</b>
+              <span>Languages in one container</span>
+            </div>
+            <div class="stat last">
+              <b>30+</b>
+              <span>Discord botlist integrations</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="foot">
+          <div class="domain">potenfyr.in</div>
+          <div class="repo">github.com/PotenFYR-Studios</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

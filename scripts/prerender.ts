@@ -7,6 +7,7 @@
 import { createServer } from "vite";
 import { renderToString } from "react-dom/server";
 import { readFile, writeFile } from "node:fs/promises";
+import { fileURLToPath } from "node:url";
 import React from "react";
 
 const vite = await createServer({
@@ -28,7 +29,7 @@ try {
   const html = renderToString(React.createElement(React.StrictMode, null, React.createElement(App)));
   await vite.close();
 
-  const dist = decodeURIComponent(new URL("../dist/index.html", import.meta.url).pathname);
+  const dist = fileURLToPath(new URL("../dist/index.html", import.meta.url));
   const file = await readFile(dist, "utf8");
   if (!file.includes('<div id="root"></div>')) {
     throw new Error("root div placeholder not found in dist/index.html");
