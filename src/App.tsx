@@ -5,6 +5,7 @@ import { HQTelemetry } from './components/HQTelemetry';
 import Hero from './components/Hero';
 import About from './components/About';
 import Projects from './components/Projects';
+import { MinecraftServer } from './components/MinecraftServer';
 import { HQVisualTelemetry } from './components/HQVisualTelemetry';
 import TechStack from './components/TechStack';
 import Services from './components/Services';
@@ -29,6 +30,7 @@ function App() {
           <HQTelemetry />
           <About />
           <Projects />
+          <MinecraftServer />
           <HQVisualTelemetry />
           <TechStack />
           <Services />
