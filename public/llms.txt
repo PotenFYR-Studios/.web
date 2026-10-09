@@ -12,6 +12,18 @@
 - [discord-botlists](https://github.com/PotenFYR-Studios/discord-botlists): zero-dependency TypeScript SDK to post stats to 30+ Discord botlists, receive realtime vote webhooks, and parse any botlist API. Docs: https://potenfyr-studios.github.io/discord-botlists/
 - [PotenFYR Nest](https://potenfyr-studios.github.io/potenfyr-nest/): official catalog of every PotenFYR Studios multi egg, auto-synced from GitHub.
 
+- [FYRwall](https://github.com/PotenFYR-Studios/FYRwall): clean GUI over UFW and iptables: no root web server, no shell interpolation, and every firewall mutation ships a restore point and rollback path.
+- [VigilFYR](https://github.com/PotenFYR-Studios/VigilFYR): local guard for AI coding agents, sits between your agent and the filesystem and blocks reads, writes, searches and commands that touch sensitive areas.
+- [Shell-Eggs](https://github.com/PotenFYR-Studios/Shell-Eggs): host any shell (incoming, tunneled, reversed, encrypted, covert, web, debug) from one panel egg.
+
+## Open in AI IDEs
+
+Any public repo in this org can be opened instantly in an AI-native editor with these URL patterns (also wired into every project card on the website):
+
+- bolt.new: https://bolt.new/github/PotenFYR-Studios/{repo} (AI builder, import + chat)
+- VS Code Web: https://vscode.dev/github/PotenFYR-Studios/{repo}
+- StackBlitz: https://stackblitz.com/github/PotenFYR-Studios/{repo}
+
 ## Organization
 
 - Website: https://potenfyr.in/

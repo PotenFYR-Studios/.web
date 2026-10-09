@@ -53,7 +53,8 @@ The website is engineered for speed and immersion: powered by **Bun**, built wit
   - Safe 15-minute caching mechanism prevents unauthenticated rate limits.
   - Any future repository created under the organization automatically appears in the software catalog.
 - 💻 **Interactive Command Terminal**:
-  - A retro-futuristic in-browser terminal allowing visitors to run commands (`status`, `projects`, `eggs`, `stack`, `sync`, `help`) with zero page-jumping.
+  - A retro-futuristic in-browser terminal allowing visitors to run commands (`status`, `projects`, `eggs`, `stack`, `sync`, `bolt`, `help`) with zero page-jumping.
+  - `bolt` / `open <ide> <repo>` launches any public repository instantly in [bolt.new](https://bolt.new), VS Code for Web, or StackBlitz; every project card carries one-click deep links for the same.
 - 🥚 **Universal Egg Infrastructure Matrix**:
   - Interactive specification and compatibility explorer showcasing our container eggs across Pterodactyl, Pelican, Feather Panel, PufferPanel, Docker, and Kubernetes.
 - 🌐 **World-Class Global SEO**:

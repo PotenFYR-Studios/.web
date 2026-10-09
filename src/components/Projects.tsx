@@ -19,6 +19,7 @@ import { useGitHubSync, categorizeRepo } from '../lib/githubSync';
 import { CardSpotlight } from './ui/CardSpotlight';
 import { BorderBeam } from './ui/BorderBeam';
 import { TextAnimate } from './ui/TextAnimate';
+import { IdeLinks } from './ui/IdeLinks';
 
 const CATEGORIES = [
   'All',
@@ -194,7 +195,7 @@ export default function Projects() {
               transition={{ duration: 0.7, delay: 0.2 }}
               className="mt-4 text-slate-400 text-base font-normal leading-relaxed"
             >
-              Auto-synced with GitHub & Modrinth. Any new repositories or tool releases published by the studio automatically register here.
+              Auto-synced with GitHub & Modrinth. Every public repository is covered here, and any new one the studio publishes registers automatically. Open any repo instantly in bolt.new, VS Code, or StackBlitz.
             </motion.p>
           </Parallax>
         </div>
@@ -314,6 +315,9 @@ export default function Projects() {
                           </span>
                         ))}
                       </div>
+
+                      {/* One-click open in bolt.new / VS Code / StackBlitz */}
+                      <IdeLinks githubUrl={project.github} className="mt-2.5" />
                     </div>
 
                     {/* Footer Metrics & Actions */}

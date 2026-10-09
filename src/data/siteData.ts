@@ -142,7 +142,7 @@ export const projects: Project[] = [
     tags: ['API Security', 'GitHub Actions', 'DevSecOps'],
   },
   {
-    name: 'Jericho Discord Bot',
+    name: 'Pyrlune Discord Bot',
     description:
       'Multipurpose community management, ticket automation, and server entertainment bot built for active Discord communities.',
     category: 'Discord & Bots',
@@ -178,6 +178,46 @@ export const projects: Project[] = [
     link: 'https://lootfyr.potenfyr.in/',
     isPrivate: true,
     tags: ['E-Commerce', 'Web App', 'Deals', 'Live Platform'],
+  },
+  {
+    name: 'potenfyr-nest',
+    description:
+      'Central mirror and catalog of every egg collection published by the studio, kept in sync automatically from the GitHub organization. Browse all multi eggs in one place.',
+    category: 'Hosting Eggs',
+    github: 'https://github.com/PotenFYR-Studios/potenfyr-nest',
+    tags: ['Egg Catalog', 'Pterodactyl', 'Auto-Sync', 'TypeScript'],
+  },
+  {
+    name: 'Shell-Eggs',
+    description:
+      'Host any shell, incoming, tunneled, reversed, encrypted, covert, web or debug, from one panel egg. Credentials are the only mandatory input; everything else is optional.',
+    category: 'Hosting Eggs',
+    github: 'https://github.com/PotenFYR-Studios/Shell-Eggs',
+    tags: ['Shell', 'Pterodactyl', 'Pelican', 'Docker'],
+  },
+  {
+    name: 'discord-botlists',
+    description:
+      'Universal multi-botlist SDK for Discord bots: post stats to 27 verified live lists, receive realtime vote webhooks, and parse every botlist API into one shape.',
+    category: 'Discord & Bots',
+    github: 'https://github.com/PotenFYR-Studios/discord-botlists',
+    tags: ['TypeScript', 'SDK', 'Botlists', 'Zero-Dependency'],
+  },
+  {
+    name: 'VigilFYR',
+    description:
+      'Local guard for AI coding agents: sits between your agent and your filesystem, blocking reads, writes, searches, and commands that touch sensitive areas.',
+    category: 'Security & APIs',
+    github: 'https://github.com/PotenFYR-Studios/VigilFYR',
+    tags: ['Rust', 'AI Agents', 'Filesystem Guard', 'DevSecOps'],
+  },
+  {
+    name: 'FYRwall',
+    description:
+      'Clean GUI over UFW and iptables for Linux administrators: no root web server, no shell interpolation, and every firewall mutation ships a restore point and rollback path.',
+    category: 'Security & APIs',
+    github: 'https://github.com/PotenFYR-Studios/FYRwall',
+    tags: ['Go', 'Firewall', 'UFW', 'Linux'],
   },
 ];
 
@@ -302,6 +342,7 @@ export const bountyResearchers: BountyResearcher[] = [
 
 export const navLinks = [
   { label: 'Projects', href: '#projects' },
+  { label: 'Anarchy', href: '#anarchy' },
   { label: 'Telemetry', href: '#telemetry' },
   { label: 'Tech Matrix', href: '#tech-stack' },
   { label: 'Capabilities', href: '#services' },

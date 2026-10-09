@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Terminal as TerminalIcon, CornerDownLeft, ShieldCheck, CheckCircle2 } from 'lucide-react';
 import { useGitHubSync } from '../lib/githubSync';
+import { buildIdeLinks } from '../lib/ideLinks';
 
 interface HistoryItem {
   command: string;
@@ -57,6 +58,7 @@ export const HQTerminal: React.FC = () => {
               <div><span className="text-cyan-400">eggs</span> : Container egg ecosystem specifications</div>
               <div><span className="text-cyan-400">stack</span> : Tech stack matrix & language share</div>
               <div><span className="text-cyan-400">sync</span> : Trigger immediate GitHub & Modrinth sync</div>
+              <div><span className="text-cyan-400">bolt</span> : Open a repo in bolt.new, VS Code or StackBlitz</div>
               <div><span className="text-cyan-400">security</span> : Zero-trust client security posture</div>
               <div><span className="text-cyan-400">test-popup</span> : Trigger live repository toast popup</div>
               <div><span className="text-cyan-400">clear</span> : Clear terminal history</div>
@@ -162,6 +164,63 @@ export const HQTerminal: React.FC = () => {
         );
         break;
 
+      case 'bolt':
+      case 'open': {
+        const ideAliases: Record<string, 'bolt' | 'vscode' | 'stackblitz'> = {
+          bolt: 'bolt',
+          'bolt.new': 'bolt',
+          vscode: 'vscode',
+          'vscode.dev': 'vscode',
+          'vs code': 'vscode',
+          stackblitz: 'stackblitz',
+        };
+        const ideId = ideAliases[(parts[1] || '').toLowerCase()] || 'bolt';
+        const repoArg = (parts[2] || '').toLowerCase();
+
+        // Case-insensitive match against the live synced repository roster
+        const match = snapshot.repos.find((r) => r.name.toLowerCase() === repoArg);
+
+        if (!match) {
+          out = (
+            <div className="space-y-2 font-mono text-xs">
+              <p className="text-rose-400">Repository not found: "{repoArg || '(none given)'}"</p>
+              <p className="text-slate-300">
+                Usage: <span className="text-cyan-300">open &lt;ide&gt; &lt;repo&gt;</span> where ide is{' '}
+                <span className="text-amber-300">bolt</span>, <span className="text-blue-300">vscode</span>, or{' '}
+                <span className="text-cyan-300">stackblitz</span> (defaults to bolt).
+              </p>
+              <div>
+                <p className="text-slate-400 mb-1">Available repositories:</p>
+                <div className="flex flex-wrap gap-1.5">
+                  {snapshot.repos.map((r) => (
+                    <button
+                      key={r.name}
+                      onClick={() => executeCommand(`open ${parts[1] || 'bolt'} ${r.name}`)}
+                      className="px-2 py-0.5 rounded-md bg-white/[0.04] hover:bg-cyan-500/20 text-slate-300 hover:text-cyan-300 border border-white/5 hover:border-cyan-500/30 transition-all"
+                    >
+                      {r.name}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+          );
+          break;
+        }
+
+        const target = buildIdeLinks(match.url).find((l) => l.id === ideId) || buildIdeLinks(match.url)[0];
+        window.open(target.href, '_blank', 'noopener,noreferrer');
+        out = (
+          <div className="space-y-1 font-mono text-xs">
+            <p className="text-emerald-400">✔ Launching {match.name} in {target.label}...</p>
+            <p className="text-slate-400">
+              {target.href} <span className="text-slate-600">(popup blocked? open manually)</span>
+            </p>
+          </div>
+        );
+        break;
+      }
+
       default:
         out = (
           <p className="font-mono text-xs text-rose-400">
@@ -220,7 +279,7 @@ export const HQTerminal: React.FC = () => {
           {/* Terminal Quick Command Chips */}
           <div className="px-4 py-2 bg-slate-900/40 border-b border-white/5 flex flex-wrap items-center gap-2 text-xs">
             <span className="text-slate-500 text-[11px]">Quick Run:</span>
-            {['status', 'projects', 'eggs', 'stack', 'sync', 'clear'].map((cmd) => (
+            {['status', 'projects', 'eggs', 'stack', 'sync', 'bolt', 'clear'].map((cmd) => (
               <button
                 key={cmd}
                 onClick={() => executeCommand(cmd)}
