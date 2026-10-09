@@ -212,8 +212,16 @@ export function useGitHubSync() {
         return;
       }
 
+      // Homepage validity is decided at build time (sync-github.ts probes each
+      // URL and nulls dead ones). Live refreshes may only keep a homepage that
+      // the build-validated snapshot also trusts, so a domain that died (or
+      // was repointed to something not yet live) never reappears client-side.
+      const validatedHomepages = new Map(
+        (fallbackData.repos as SyncedRepo[]).map((r) => [r.name.toLowerCase(), Boolean(r.homepage)])
+      );
+
       const repos: SyncedRepo[] = rawRepos
-        .filter((r) => r.name !== '.github')
+        .filter((r) => r.name !== '.github' && !r.private)
         .map((r) => ({
           name: r.name,
           fullName: r.full_name,
@@ -223,7 +231,8 @@ export function useGitHubSync() {
             .replace(/\s+/g, ' ')
             .trim(),
           url: r.html_url,
-          homepage: r.homepage || null,
+          homepage:
+            r.homepage && validatedHomepages.get(r.name.toLowerCase()) ? r.homepage : null,
           stars: r.stargazers_count ?? 0,
           forks: r.forks_count ?? 0,
           language: r.language || null,

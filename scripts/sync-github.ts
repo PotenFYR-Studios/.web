@@ -3,7 +3,7 @@
  * Safely fetches latest repositories, topics, languages, and Modrinth metrics.
  * Runs in Bun before building, or standalone.
  */
-import { writeFileSync, existsSync, readFileSync } from 'node:fs';
+import { writeFileSync, existsSync, readFileSync, mkdirSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 interface SyncedRepo {
@@ -36,6 +36,7 @@ interface RawGitHubRepo {
   pushed_at: string;
   license?: { spdx_id?: string; name?: string } | null;
   archived?: boolean;
+  private?: boolean;
 }
 
 interface ModrinthData {
@@ -67,6 +68,50 @@ interface SyncedSnapshot {
 const ORG_NAME = 'PotenFYR-Studios';
 const MODRINTH_SLUGS = ['authcore', 'statfyr', 'onejumpalljump', 'echoing-deaths'];
 const TARGET_FILE = resolve(import.meta.dir, '../src/data/syncedData.json');
+const HOMEPAGE_PROBE_TIMEOUT_MS = 6000;
+
+/**
+ * Probe a homepage URL: HEAD first, GET as fallback (some hosts reject HEAD).
+ * Only 2xx/3xx counts as alive; DNS failures, timeouts and 4xx/5xx are dead.
+ * A dead verdict is retried once: parallel DNS bursts can flakily fail.
+ */
+async function isUrlAlive(url: string): Promise<boolean> {
+  const probe = async (method: 'HEAD' | 'GET'): Promise<boolean> => {
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), HOMEPAGE_PROBE_TIMEOUT_MS);
+    try {
+      const res = await fetch(url, {
+        method,
+        redirect: 'follow',
+        signal: ctrl.signal,
+        headers: { 'User-Agent': 'Mozilla/5.0 (compatible; PotenFYR-SiteCheck/1.0)' },
+      });
+      return res.status >= 200 && res.status < 400;
+    } catch {
+      return false;
+    } finally {
+      clearTimeout(timer);
+    }
+  };
+  const once = async (): Promise<boolean> => (await probe('HEAD')) || (await probe('GET'));
+  if (await once()) return true;
+  await new Promise((r) => setTimeout(r, 500));
+  return once();
+}
+
+/** Run async work over items with bounded concurrency to avoid resolver storms. */
+async function mapWithConcurrency<T, R>(items: T[], limit: number, fn: (item: T) => Promise<R>): Promise<R[]> {
+  const results: R[] = new Array(items.length);
+  let next = 0;
+  const workers = Array.from({ length: Math.min(limit, items.length) }, async () => {
+    while (next < items.length) {
+      const index = next++;
+      results[index] = await fn(items[index]);
+    }
+  });
+  await Promise.all(workers);
+  return results;
+}
 
 async function runSync() {
   console.log(`[Auto-Sync] Fetching latest PotenFYR Studios metadata from GitHub & Modrinth...`);
@@ -126,7 +171,8 @@ async function runSync() {
       const rawRepos: RawGitHubRepo[] = await reposRes.json();
       if (Array.isArray(rawRepos)) {
         repos = rawRepos
-          .filter((r) => r.name !== '.github')
+          // Never publish private repos, even if the token can see them.
+          .filter((r) => r.name !== '.github' && !r.private)
           .map((r) => ({
             name: r.name,
             fullName: r.full_name,
@@ -149,6 +195,61 @@ async function runSync() {
       }
     } else {
       console.warn(`[Auto-Sync] GitHub Repos fetch warning (${reposRes.status}): using fallback.`);
+    }
+
+    // 2b. Validate homepages: drop dead links so cards never ship a broken
+    // "Launch Platform" button. A URL that fails twice (HEAD, then GET, with
+    // a retry) is treated as dead; the next build re-probes, so links come
+    // back automatically once a domain actually goes live.
+    const withHomepages = repos.filter((r) => Boolean(r.homepage));
+    const aliveResults = await mapWithConcurrency(withHomepages, 4, async (r) => ({
+      repo: r,
+      alive: await isUrlAlive(r.homepage as string),
+    }));
+    let droppedHomepages = 0;
+    for (const { repo, alive } of aliveResults) {
+      if (!alive) {
+        droppedHomepages += 1;
+        repo.homepage = null;
+      }
+    }
+    if (droppedHomepages > 0) {
+      console.warn(`[Auto-Sync] Dropped ${droppedHomepages} dead homepage link(s): ${aliveResults.filter((x) => !x.alive).map((x) => x.repo.name).join(', ')}`);
+    }
+
+    // 2c. Probe the public Minecraft server (play.potenfyr.in) via mcsrvstat.us
+    // and cache the verdict; vite.config.ts inlines it at build time. A failed
+    // probe keeps the previous cache, so the site never lies about uptime.
+    try {
+      const MC_HOSTNAME = 'play.potenfyr.in';
+      const mcCtrl = new AbortController();
+      const mcTimer = setTimeout(() => mcCtrl.abort(), HOMEPAGE_PROBE_TIMEOUT_MS);
+      const mcRes = await fetch(`https://api.mcsrvstat.us/3/${MC_HOSTNAME}`, {
+        signal: mcCtrl.signal,
+        headers: { 'User-Agent': 'Mozilla/5.0 (compatible; PotenFYR-SiteCheck/1.0)' },
+      });
+      clearTimeout(mcTimer);
+      if (mcRes.ok) {
+        const mc = await mcRes.json();
+        const mcStatus = {
+          host: MC_HOSTNAME,
+          online: Boolean(mc.online),
+          players: mc.players?.online ?? 0,
+          max: mc.players?.max ?? 0,
+          version: mc.version ?? null,
+          probedAt: new Date().toISOString(),
+        };
+        const cacheDir = resolve(import.meta.dir, '../node_modules/.cache');
+        mkdirSync(cacheDir, { recursive: true });
+        writeFileSync(resolve(cacheDir, 'mc-server-status.json'), JSON.stringify(mcStatus), 'utf-8');
+        console.log(
+          `[Auto-Sync] Minecraft server ${mcStatus.online ? `online: ${mcStatus.players}/${mcStatus.max} players (${mcStatus.version})` : 'offline'}.`
+        );
+      } else {
+        console.warn(`[Auto-Sync] Minecraft probe warning (mcsrvstat ${mcRes.status}): keeping previous cache.`);
+      }
+    } catch {
+      console.warn('[Auto-Sync] Minecraft probe skipped (network unavailable): keeping previous cache.');
     }
 
     // 3. Fetch Modrinth Stats
