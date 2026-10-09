@@ -1,0 +1,52 @@
+# Line-ending policy for potenfyr-web.
+#
+# This repo gets checked out from Windows-formatted / case-insensitive mounts
+# (NTFS, exFAT) as well as native ext*, where editors and tools happily write
+# CRLF. With no policy in place, every checkout shows dozens of files as
+# "modified" when only the line endings differ, which buries real changes.
+#
+# Rule: normalise every text file to LF in the repository AND on checkout.
+# Git auto-detects binary content, so images/fonts/archives stay untouched.
+
+* text=auto eol=lf
+
+# Source and config are always text. Stated explicitly so content sniffing can
+# never misclassify a small file as binary (a stray bare CR is enough to do it),
+# which would silently pin its line endings forever.
+*.ts    text eol=lf
+*.tsx   text eol=lf
+*.js    text eol=lf
+*.mjs   text eol=lf
+*.cjs   text eol=lf
+*.jsx   text eol=lf
+*.json  text eol=lf
+*.css   text eol=lf
+*.html  text eol=lf
+*.md    text eol=lf
+*.txt   text eol=lf
+*.xml   text eol=lf
+*.yml   text eol=lf
+*.yaml  text eol=lf
+*.lock  text eol=lf
+*.svg   text eol=lf
+
+# Explicitly binary — never apply text conversion or diff these.
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.ico   binary
+*.webp  binary
+*.avif  binary
+*.pdf   binary
+*.zip   binary
+*.gz    binary
+*.wasm  binary
+*.woff  binary
+*.woff2 binary
+*.ttf   binary
+*.otf   binary
+*.eot   binary
+*.mp4   binary
+*.webm  binary
+*.mp3   binary
